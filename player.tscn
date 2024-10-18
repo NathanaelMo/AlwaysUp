@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://f4l2rjdekybr"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_oxndr"]
+[ext_resource type="Script" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.gd" id="2_12q3v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0gpws"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wei3d"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.73036, 0)
+script = ExtResource("1_oxndr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0.529043, 0)
+mesh = SubResource("CapsuleMesh_0gpws")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 2, 0, 0, 0, 0.5, 0, 0.529043, 0)
+shape = SubResource("CapsuleShape3D_wei3d")
+
+[node name="ThirdPersonCamera" type="Node3D" parent="."]
+script = ExtResource("2_12q3v")
+distance_from_pivot = 20.0
+
+[node name="Camera" type="Camera3D" parent="ThirdPersonCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 9.57076, 18.7938)
+top_level = true
+
+[node name="RotationPivot" type="Node3D" parent="ThirdPersonCamera"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0)
+
+[node name="OffsetPivot" type="Node3D" parent="ThirdPersonCamera/RotationPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CameraSpringArm" type="SpringArm3D" parent="ThirdPersonCamera/RotationPivot/OffsetPivot"]
+spring_length = 20.0
+
+[node name="CameraMarker" type="Marker3D" parent="ThirdPersonCamera/RotationPivot/OffsetPivot/CameraSpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.78814e-07, 0, 1.78814e-07, 1, 0, 0, 20)
+
+[node name="CameraShaker" type="Node3D" parent="ThirdPersonCamera"]

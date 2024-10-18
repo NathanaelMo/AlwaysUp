@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="AlwaysUp"
+run/main_scene="res://jeu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg")
