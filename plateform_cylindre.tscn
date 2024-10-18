@@ -2,14 +2,15 @@
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_renac"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ytb3s"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dt8qp"]
+size = Vector3(0.771057, 2.0025, 0.74469)
 
 [node name="PlateformCylindre" type="StaticBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.485512, -0.174846, 0, 0.87423, 0.0971023, 0, 1.37633, 1.77002)
+transform = Transform3D(2, 0, 0, 0, 4.85512, -1.74846, 0, 8.7423, 0.971024, 0, 1.37633, 1.77002)
 mesh = SubResource("CylinderMesh_renac")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.485512, -0.174846, 0, 0.87423, 0.0971023, 0, 1.37633, 1.77002)
-shape = SubResource("CylinderShape3D_ytb3s")
+transform = Transform3D(2, 0, 0, 0, 4.85512, -1.74846, 0, 8.7423, 0.971024, -0.0149536, 1.37491, 1.74672)
+shape = SubResource("BoxShape3D_dt8qp")
