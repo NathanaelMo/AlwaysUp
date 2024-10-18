@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateforme_cube.tscn" id="4_854fk"]
 [ext_resource type="Script" path="res://label.gd" id="5_ae6dp"]
 [ext_resource type="PackedScene" uid="uid://6ob8q2dfy7ai" path="res://plateform_cylindre.tscn" id="6_o1bd6"]
-[ext_resource type="PackedScene" path="res://plateforme_cube_qui_se_déplace.tscn" id="7_ij0dq"]
-[ext_resource type="PackedScene" uid="uid://bl7fu6sba4qrh" path="res://plateforme_cube_clignote.tscn" id="8_r6s41"]
-[ext_resource type="PackedScene" uid="uid://8xfgtp2wm052" path="res://plateforme_cube_clignote2.tscn" id="9_xhudl"]
-[ext_resource type="PackedScene" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
-[ext_resource type="PackedScene" path="res://faucheuse.tscn" id="11_drs1d"]
+[ext_resource type="PackedScene" uid="uid://cmd6gyirlabpj" path="res://plateforme_cube_qui_se_déplace.tscn" id="7_ij0dq"]
+[ext_resource type="PackedScene" uid="uid://bv55ejnnb5dwa" path="res://plateforme_cube_clignote.tscn" id="8_r6s41"]
+[ext_resource type="PackedScene" uid="uid://cj55djxl684vc" path="res://plateforme_cube_clignote2.tscn" id="9_xhudl"]
+[ext_resource type="PackedScene" uid="uid://b0g61dqryxfyj" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
+[ext_resource type="PackedScene" uid="uid://bpb3s8w68coln" path="res://faucheuse.tscn" id="11_drs1d"]
 [ext_resource type="Script" path="res://chrono.gd" id="12_be1we"]
-[ext_resource type="PackedScene" path="res://boxe.tscn" id="13_5gpwy"]
-[ext_resource type="PackedScene" path="res://boxeInverse.tscn" id="14_ib5mu"]
+[ext_resource type="PackedScene" uid="uid://7w0ksx8avq5d" path="res://boxe.tscn" id="13_5gpwy"]
+[ext_resource type="PackedScene" uid="uid://bcyo6rqx6j54x" path="res://boxeInverse.tscn" id="14_ib5mu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qyqik"]
 
@@ -114,3 +114,9 @@ transform = Transform3D(1, 0, 0, 0, 0.0605259, 0.998167, 0, -0.998167, 0.0605259
 
 [node name="PlateformCylindre3" parent="." instance=ExtResource("6_o1bd6")]
 transform = Transform3D(0.0495645, -0.459835, -0.88662, 0, 0.887711, -0.460401, 0.998771, 0.0228196, 0.043999, 47.5932, 58.1115, -59.5336)
+
+[node name="PlateformeCube11" parent="." instance=ExtResource("4_854fk")]
+transform = Transform3D(1, 0, 0, 0, -0.853587, 0.52095, 0, -0.52095, -0.853587, 46.5912, 60.4773, -71.8699)
+
+[node name="PlateformeCube10" parent="PlateformeCube11" instance=ExtResource("4_854fk")]
+transform = Transform3D(1, 0, 0, 0, 0.868069, 0.496444, 0, -0.496444, 0.868069, -0.463875, 5.39391, 15.7691)
