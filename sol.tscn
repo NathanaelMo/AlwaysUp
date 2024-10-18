@@ -1,17 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://42orxisspgxh"]
+[gd_scene load_steps=5 format=3 uid="uid://42orxisspgxh"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fis36"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1btbx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0i141"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eg7cn"]
+albedo_color = Color(0.439216, 1, 0.380392, 1)
 
 [sub_resource type="HeightMapShape3D" id="HeightMapShape3D_sq42x"]
 
 [node name="Sol" type="StaticBody3D"]
-physics_material_override = SubResource("PhysicsMaterial_fis36")
+physics_material_override = SubResource("PhysicsMaterial_1btbx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
 mesh = SubResource("PlaneMesh_0i141")
+surface_material_override/0 = SubResource("StandardMaterial3D_eg7cn")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
