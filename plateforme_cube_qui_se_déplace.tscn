@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmd6gyirlabpj"]
+
+[ext_resource type="Script" path="res://plateforme_cube_qui_se_déplace.gd" id="1_cch1d"]
+[ext_resource type="Script" path="res://area_3d.gd" id="2_vwepx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_k2bho"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgwjc"]
+size = Vector3(1, 0.938354, 1)
+
+[node name="PlateformeCubeQuiBouge" type="StaticBody3D"]
+script = ExtResource("1_cch1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.058674, 0)
+mesh = SubResource("BoxMesh_k2bho")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.0308228, 0)
+shape = SubResource("BoxShape3D_sgwjc")
+metadata/_edit_lock_ = true
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("2_vwepx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.0308228, 0)
+shape = SubResource("BoxShape3D_sgwjc")
+metadata/_edit_lock_ = true
