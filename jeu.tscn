@@ -110,10 +110,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, 23.1338)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, -6.36513)
 
 [node name="PlateformeCube10" parent="." instance=ExtResource("4_854fk")]
-transform = Transform3D(1, 0, 0, 0, 0.0605259, 0.998167, 0, -0.998167, 0.0605259, 46.5912, 52.46, -49.6316)
+transform = Transform3D(1, 0, 0, 0, 0.121052, 0.998167, 0, -1.99633, 0.0605259, 46.5912, 52.46, -49.1326)
 
 [node name="PlateformCylindre3" parent="." instance=ExtResource("6_o1bd6")]
-transform = Transform3D(0.0495645, -0.459835, -0.88662, 0, 0.887711, -0.460401, 0.998771, 0.0228196, 0.043999, 47.5932, 58.1115, -59.5336)
+transform = Transform3D(0.0495645, -0.459835, -0.88662, 0, 0.887711, -0.460401, 0.998771, 0.0228196, 0.043999, 47.5932, 58.1115, -59.0639)
 
 [node name="PlateformeCube11" parent="." instance=ExtResource("4_854fk")]
 transform = Transform3D(1, 0, 0, 0, -0.853587, 0.52095, 0, -0.52095, -0.853587, 46.5912, 60.4773, -71.8699)
