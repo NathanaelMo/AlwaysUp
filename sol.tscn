@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://42orxisspgxh"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fis36"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0i141"]
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_sq42x"]
+
+[node name="Sol" type="StaticBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_fis36")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)
+mesh = SubResource("PlaneMesh_0i141")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, -1.90735e-06, 0)
+shape = SubResource("HeightMapShape3D_sq42x")
+metadata/_edit_lock_ = true
