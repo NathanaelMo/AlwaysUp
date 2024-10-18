@@ -11,9 +11,10 @@ Environnement immersif : Découvre des effets visuels et sonores immersifs à me
 # Installation
 Clone le dépôt sur ton ordinateur :
 
-bash
 Copier le code
-git clone https://github.com/tonutilisateur/alwaysup.git
+
+git clone [https://github.com/tonutilisateur/alwaysup.git](https://github.com/NathanaelMo/AlwaysUp.git)
+
 Ouvre le projet avec Godot Engine 4.3.
 
 Lance le jeu en cliquant sur le bouton "Run" dans l'éditeur ou en utilisant F5.
