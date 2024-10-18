@@ -1,28 +1,40 @@
 extends CharacterBody3D
 
+var speed = 15
+var jump_force = 20
+var gravity = 45
+var mouse_sensitivity = 0.05
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 7.5
-  
- 
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
+@onready var camera = $Camera3D
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func _physics_process(delta):
+	# Appliquer la gravité
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
+		velocity.y -= gravity * delta
+	
+	# Gérer le saut
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		velocity.y = jump_force
+	
+	# Obtenir la direction d'entrée et normaliser
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	# Appliquer le mouvement horizontal
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+	
 	move_and_slide()
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
+		camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
+		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
