@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateforme_cube.tscn" id="4_854fk"]
 [ext_resource type="Script" path="res://label.gd" id="5_ae6dp"]
 [ext_resource type="PackedScene" uid="uid://6ob8q2dfy7ai" path="res://plateform_cylindre.tscn" id="6_o1bd6"]
-[ext_resource type="PackedScene" uid="uid://cmd6gyirlabpj" path="res://plateforme_cube_qui_se_déplace.tscn" id="7_ij0dq"]
-[ext_resource type="PackedScene" uid="uid://bv55ejnnb5dwa" path="res://plateforme_cube_clignote.tscn" id="8_r6s41"]
-[ext_resource type="PackedScene" uid="uid://cj55djxl684vc" path="res://plateforme_cube_clignote2.tscn" id="9_xhudl"]
-[ext_resource type="PackedScene" uid="uid://b0g61dqryxfyj" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
-[ext_resource type="PackedScene" uid="uid://bpb3s8w68coln" path="res://faucheuse.tscn" id="11_drs1d"]
+[ext_resource type="PackedScene" path="res://plateforme_cube_qui_se_déplace.tscn" id="7_ij0dq"]
+[ext_resource type="PackedScene" uid="uid://bl7fu6sba4qrh" path="res://plateforme_cube_clignote.tscn" id="8_r6s41"]
+[ext_resource type="PackedScene" uid="uid://8xfgtp2wm052" path="res://plateforme_cube_clignote2.tscn" id="9_xhudl"]
+[ext_resource type="PackedScene" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
+[ext_resource type="PackedScene" path="res://faucheuse.tscn" id="11_drs1d"]
 [ext_resource type="Script" path="res://chrono.gd" id="12_be1we"]
-[ext_resource type="PackedScene" uid="uid://7w0ksx8avq5d" path="res://boxe.tscn" id="13_5gpwy"]
-[ext_resource type="PackedScene" uid="uid://bcyo6rqx6j54x" path="res://boxeInverse.tscn" id="14_ib5mu"]
+[ext_resource type="PackedScene" path="res://boxe.tscn" id="13_5gpwy"]
+[ext_resource type="PackedScene" path="res://boxeInverse.tscn" id="14_ib5mu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qyqik"]
 
@@ -55,17 +55,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07825, 20.2713, 12.3049)
 [node name="PlateformCylindre2" parent="." instance=ExtResource("6_o1bd6")]
 transform = Transform3D(1, 0, 0, 0, 0.870253, -0.492606, 0, 0.492606, 0.870253, -6.28809, 21.6641, 45.4335)
 
-[node name="PlateformeCube5" parent="." instance=ExtResource("8_r6s41")]
+[node name="PlateformeRouge1" parent="." instance=ExtResource("8_r6s41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96044, 22.6668, 67.7273)
 
-[node name="PlateformeCube6" parent="." instance=ExtResource("9_xhudl")]
+[node name="PlatformeJaune1" parent="." instance=ExtResource("9_xhudl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73197, 25.1079, 70.0128)
+start_delay = 2.0
 
-[node name="PlateformeCube7" parent="." instance=ExtResource("8_r6s41")]
+[node name="PlateformeRouge2" parent="." instance=ExtResource("8_r6s41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6692, 27.2675, 67.7273)
 
-[node name="PlateformeCube8" parent="." instance=ExtResource("9_xhudl")]
+[node name="PlatformeJaune2" parent="." instance=ExtResource("9_xhudl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6205, 30.1957, 70.0128)
+start_delay = 2.0
 
 [node name="PlateformeCube9" parent="." instance=ExtResource("4_854fk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.7723, 33.161, 71.1969)
