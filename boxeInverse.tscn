@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcyo6rqx6j54x"]
+
+[ext_resource type="Script" path="res://boxe_inverse.gd" id="1_ladvq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jpybv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1anhn"]
+
+[node name="Boxe" type="StaticBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 38.8109, 58.4925, 34.9246)
+script = ExtResource("1_ladvq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jpybv")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1anhn")
+metadata/_edit_lock_ = true

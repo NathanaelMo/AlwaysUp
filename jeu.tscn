@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=17 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://f4l2rjdekybr" path="res://player.tscn" id="2_8kgaq"]
 [ext_resource type="PackedScene" uid="uid://8osy21oc6d3f" path="res://directional_light_3d.tscn" id="3_22anu"]
 [ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateforme_cube.tscn" id="4_854fk"]
+[ext_resource type="Script" path="res://label.gd" id="5_ae6dp"]
+[ext_resource type="PackedScene" uid="uid://6ob8q2dfy7ai" path="res://plateform_cylindre.tscn" id="6_o1bd6"]
+[ext_resource type="PackedScene" uid="uid://cmd6gyirlabpj" path="res://plateforme_cube_qui_se_déplace.tscn" id="7_ij0dq"]
+[ext_resource type="PackedScene" uid="uid://bv55ejnnb5dwa" path="res://plateforme_cube_clignote.tscn" id="8_r6s41"]
+[ext_resource type="PackedScene" uid="uid://cj55djxl684vc" path="res://plateforme_cube_clignote2.tscn" id="9_xhudl"]
+[ext_resource type="PackedScene" uid="uid://b0g61dqryxfyj" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
+[ext_resource type="PackedScene" uid="uid://bpb3s8w68coln" path="res://faucheuse.tscn" id="11_drs1d"]
+[ext_resource type="Script" path="res://chrono.gd" id="12_be1we"]
+[ext_resource type="PackedScene" uid="uid://7w0ksx8avq5d" path="res://boxe.tscn" id="13_5gpwy"]
+[ext_resource type="PackedScene" uid="uid://bcyo6rqx6j54x" path="res://boxeInverse.tscn" id="14_ib5mu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qyqik"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ist5w"]
 
 [node name="Jeu" type="Node3D"]
 
@@ -22,3 +36,79 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77518, 5.0721, -1.49407)
 
 [node name="PlateformeCube3" parent="." instance=ExtResource("4_854fk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6713, 8.66824, -12.6181)
+
+[node name="Hauteur" type="Label" parent="."]
+offset_right = 92.0
+offset_bottom = 24.0
+script = ExtResource("5_ae6dp")
+player = NodePath("../Player")
+
+[node name="PlateformCylindre" parent="." instance=ExtResource("6_o1bd6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5818, 12.3688, -7.11972)
+
+[node name="PlateformeCube4" parent="." instance=ExtResource("4_854fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.96574, 17.6711, 11.7155)
+
+[node name="PlateformeCubeQuiBouge" parent="." instance=ExtResource("7_ij0dq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.07825, 20.2713, 12.3049)
+
+[node name="PlateformCylindre2" parent="." instance=ExtResource("6_o1bd6")]
+transform = Transform3D(1, 0, 0, 0, 0.870253, -0.492606, 0, 0.492606, 0.870253, -6.28809, 21.6641, 45.4335)
+
+[node name="PlateformeCube5" parent="." instance=ExtResource("8_r6s41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96044, 22.6668, 67.7273)
+
+[node name="PlateformeCube6" parent="." instance=ExtResource("9_xhudl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.73197, 25.1079, 70.0128)
+
+[node name="PlateformeCube7" parent="." instance=ExtResource("8_r6s41")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6692, 27.2675, 67.7273)
+
+[node name="PlateformeCube8" parent="." instance=ExtResource("9_xhudl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6205, 30.1957, 70.0128)
+
+[node name="PlateformeCube9" parent="." instance=ExtResource("4_854fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.7723, 33.161, 71.1969)
+
+[node name="PlateformeCubeQuiBouge2" parent="." instance=ExtResource("10_h4x0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9338, 37.2475, 55.4262)
+
+[node name="plateforme longue" type="StaticBody3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 80, 46.1302, 53.6064, 1.36033)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plateforme longue"]
+mesh = SubResource("BoxMesh_qyqik")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plateforme longue"]
+shape = SubResource("BoxShape3D_ist5w")
+metadata/_edit_lock_ = true
+
+[node name="faucheuse" parent="." instance=ExtResource("11_drs1d")]
+
+[node name="Chrono" type="Label" parent="."]
+offset_left = 1055.0
+offset_right = 1151.0
+offset_bottom = 39.0
+horizontal_alignment = 2
+script = ExtResource("12_be1we")
+
+[node name="Boxe" parent="." instance=ExtResource("13_5gpwy")]
+
+[node name="Boxe2" parent="." instance=ExtResource("13_5gpwy")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 38.8109, 58.4925, 7.9323)
+
+[node name="Boxe3" parent="." instance=ExtResource("13_5gpwy")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 38.8109, 58.4925, -21.2992)
+
+[node name="Boxe5" parent="." instance=ExtResource("14_ib5mu")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, 23.1338)
+
+[node name="Boxe6" parent="." instance=ExtResource("14_ib5mu")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, -6.36513)
+
+[node name="PlateformeCube10" parent="." instance=ExtResource("4_854fk")]
+transform = Transform3D(1, 0, 0, 0, 0.0605259, 0.998167, 0, -0.998167, 0.0605259, 46.5912, 52.46, -49.6316)
+
+[node name="PlateformCylindre3" parent="." instance=ExtResource("6_o1bd6")]
+transform = Transform3D(0.0495645, -0.459835, -0.88662, 0, 0.887711, -0.460401, 0.998771, 0.0228196, 0.043999, 47.5932, 58.1115, -59.5336)

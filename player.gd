@@ -3,7 +3,7 @@ extends CharacterBody3D
 var speed = 15
 var jump_force = 20
 var gravity = 45
-var mouse_sensitivity = 0.05
+var mouse_sensitivity = 0.20
 
 @onready var camera = $Camera3D
 @onready var animation_player = $AnimationPlayer

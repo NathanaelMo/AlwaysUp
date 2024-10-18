@@ -1,25 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://du8x310p6e3ct"]
+[gd_scene load_steps=6 format=3 uid="uid://cj55djxl684vc"]
+
+[ext_resource type="Script" path="res://plateforme_cube_clignote.gd" id="1_exxls"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g1kr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k2bho"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmts1"]
-albedo_color = Color(0.588235, 1, 1, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l47w4"]
+albedo_color = Color(1, 1, 0.133333, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sgwjc"]
 size = Vector3(1, 0.938354, 1)
 
 [node name="PlateformeCube" type="StaticBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_3g1kr")
+script = ExtResource("1_exxls")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.058674, 0)
 mesh = SubResource("BoxMesh_k2bho")
-surface_material_override/0 = SubResource("StandardMaterial3D_dmts1")
+surface_material_override/0 = SubResource("StandardMaterial3D_l47w4")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.0308228, 0)
 shape = SubResource("BoxShape3D_sgwjc")
 metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 13.0
+autostart = true
