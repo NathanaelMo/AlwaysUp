@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var speed = 2.0  # Vitesse de la plateforme
+@export var speed = 10.0  # Vitesse de la plateforme
 @export var distance = 15.0  # Distance que la plateforme parcourt
 @export var direction = Vector3(0, 0, 1)  # Mouvement le long de l'axe Z (changer si nécessaire)
 

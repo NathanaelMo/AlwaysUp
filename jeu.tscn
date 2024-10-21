@@ -26,7 +26,7 @@
 [node name="Sol" parent="." instance=ExtResource("1_7reem")]
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.3831, 77.9568, -89.3573)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2607, 4.65234, 0.656548)
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("3_22anu")]
 
@@ -76,7 +76,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6205, 30.1957, 70.0128)
 start_delay = 2.0
 
 [node name="PlateformeCubeQuiBouge2" parent="." instance=ExtResource("10_h4x0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9338, 37.2475, 55.4262)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9338, 30.7354, 55.4262)
 
 [node name="plateforme longue" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 80, 46.1302, 53.6064, 1.36033)
