@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl7fu6sba4qrh"]
 
-[ext_resource type="Script" path="res://plateforme_cube_clignote.gd" id="1_gt7cs"]
+[ext_resource type="Script" path="res://plateformes/plateformes_immobiles/plateforme_clignote.gd" id="1_lrhht"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g1kr"]
 
@@ -14,7 +14,7 @@ size = Vector3(1, 0.938354, 1)
 
 [node name="PlateformeCube" type="StaticBody3D"]
 physics_material_override = SubResource("PhysicsMaterial_3g1kr")
-script = ExtResource("1_gt7cs")
+script = ExtResource("1_lrhht")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, -0.058674, 0)
