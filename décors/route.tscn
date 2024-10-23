@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvcki0eo48nrf"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hw6mn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nm4h"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_qrrsl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7tmld"]
+
+[node name="Route" type="StaticBody3D"]
+transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 0, 0, 0)
+
+[node name="bitume" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.03, 0, 0, 0, 1.018, 0, 0, 0, 1.018, 0, 0, 0)
+mesh = SubResource("PlaneMesh_hw6mn")
+surface_material_override/0 = SubResource("StandardMaterial3D_3nm4h")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2.06373, 0, 0, 0, 2.00594, 0, 0, 0, 2.00594, 0, 0, 0)
+shape = SubResource("HeightMapShape3D_qrrsl")
+metadata/_edit_lock_ = true
+
+[node name="marquage" type="Node3D" parent="."]
+
+[node name="ligne" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, 0, 0.0080744, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne6" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, 0.25, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne7" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, 0.5, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne8" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, 0.75, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne2" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, -0.25, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne3" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, -0.5, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne4" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, -0.75, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")
+
+[node name="ligne5" type="MeshInstance3D" parent="marquage"]
+transform = Transform3D(0.0287501, 0, 0, 0, 0.02875, 0, 0, 0, 0.0287501, -1, 0.008, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+skeleton = NodePath("../..")

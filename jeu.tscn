@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
 [ext_resource type="PackedScene" uid="uid://f4l2rjdekybr" path="res://joueur/player.tscn" id="2_8kgaq"]
 [ext_resource type="PackedScene" uid="uid://bjuh4q1jd5enr" path="res://autres/chrono.tscn" id="2_bk2hb"]
-[ext_resource type="PackedScene" uid="uid://8osy21oc6d3f" path="res://lumières/directional_light_3d.tscn" id="3_22anu"]
+[ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/route.tscn" id="5_i7can"]
 
 [node name="Jeu" type="Node3D"]
 
@@ -14,9 +14,13 @@ player = NodePath("../Player")
 [node name="Chrono" parent="." instance=ExtResource("2_bk2hb")]
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86902, 2.73036, -3.53887)
-
-[node name="DirectionalLight3D" parent="." instance=ExtResource("3_22anu")]
-transform = Transform3D(0.785695, 0.618614, -3.75509e-08, -0.235256, 0.298796, 0.924865, 0.572135, -0.726662, 0.380295, 10.7152, 87.1449, -12.9458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86902, 6.22092, -3.53887)
 
 [node name="Sol" parent="." instance=ExtResource("1_7reem")]
+transform = Transform3D(13.1229, 0, 0, 0, 6.01617, 0, 0, 0, 13.2681, 0, 0, 0)
+
+[node name="Route" parent="." instance=ExtResource("5_i7can")]
+transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 4.53504, 0.0913601, 0.746186)
+
+[node name="Route2" parent="." instance=ExtResource("5_i7can")]
+transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 129.144, 0.0913601, 0.746186)
