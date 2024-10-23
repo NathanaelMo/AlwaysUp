@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=7 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://plateformes/plateformes_immobiles/sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
 [ext_resource type="PackedScene" uid="uid://f4l2rjdekybr" path="res://joueur/player.tscn" id="2_8kgaq"]
 [ext_resource type="PackedScene" uid="uid://bjuh4q1jd5enr" path="res://autres/chrono.tscn" id="2_bk2hb"]
+[ext_resource type="PackedScene" uid="uid://cl0sqst5juxin" path="res://décors/lampadaire.tscn" id="5_hsxm5"]
 [ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/route.tscn" id="5_i7can"]
 
 [node name="Jeu" type="Node3D"]
@@ -24,3 +25,27 @@ transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 4.53504, 0.
 
 [node name="Route2" parent="." instance=ExtResource("5_i7can")]
 transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 129.144, 0.0913601, 0.746186)
+
+[node name="eclerage" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.2299)
+
+[node name="StreetLamp" parent="eclerage" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 0, 0, -6.84859)
+
+[node name="StreetLamp2" parent="eclerage" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 90, 0, -6.849)
+
+[node name="StreetLamp3" parent="eclerage" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 180, 0, -6.849)
+
+[node name="eclerage2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.57183)
+
+[node name="StreetLamp" parent="eclerage2" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 0, 0, -6.84859)
+
+[node name="StreetLamp2" parent="eclerage2" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 90, 0, -6.849)
+
+[node name="StreetLamp3" parent="eclerage2" instance=ExtResource("5_hsxm5")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 180, 0, -6.849)
