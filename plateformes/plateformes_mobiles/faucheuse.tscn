@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpb3s8w68coln"]
 
-[ext_resource type="Script" path="res://plateformes/plateformes_mobiles/faucheuse.gd" id="1_falj2"]
+[ext_resource type="Script" path="res://plateformes/plateformes_mobiles/scripts/faucheuse.gd" id="1_falj2"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_gtpxg"]
 

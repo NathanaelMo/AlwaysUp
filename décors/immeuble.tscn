@@ -1,0 +1,156 @@
+[gd_scene load_steps=12 format=3 uid="uid://mpe2x2gmym4l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_building"]
+size = Vector3(12, 30, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
+albedo_color = Color(0.8, 0.8, 0.75, 1)
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_windows"]
+size = Vector3(1.5, 2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_windows"]
+albedo_color = Color(0.2, 0.4, 0.6, 1)
+metallic = 0.7
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_roof"]
+size = Vector3(13, 1, 11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
+size = Vector3(12, 30, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_entrance"]
+size = Vector3(3, 4, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_entrance"]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_door"]
+size = Vector3(1.8, 2.5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_door"]
+albedo_color = Color(0.3, 0.2, 0.15, 1)
+metallic = 0.3
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_antenna"]
+top_radius = 0.05
+bottom_radius = 0.1
+height = 4.0
+
+[node name="AppartmentBuilding" type="StaticBody3D"]
+
+[node name="BuildingMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+mesh = SubResource("BoxMesh_building")
+surface_material_override/0 = SubResource("StandardMaterial3D_walls")
+
+[node name="Windows" type="Node3D" parent="."]
+
+[node name="WindowRow1" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowRow2" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowRow3" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 5.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.5, 0)
+mesh = SubResource("BoxMesh_roof")
+surface_material_override/0 = SubResource("StandardMaterial3D_walls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+shape = SubResource("BoxShape3D_collision")
+
+[node name="Entrance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 5.5)
+mesh = SubResource("BoxMesh_entrance")
+surface_material_override/0 = SubResource("StandardMaterial3D_entrance")
+
+[node name="MainDoor" type="MeshInstance3D" parent="Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0.6)
+mesh = SubResource("BoxMesh_door")
+surface_material_override/0 = SubResource("StandardMaterial3D_door")
+
+[node name="RoofStructures" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 31, 0)
+
+[node name="Antenna1" type="MeshInstance3D" parent="RoofStructures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -4)
+mesh = SubResource("CylinderMesh_antenna")
+
+[node name="Antenna2" type="MeshInstance3D" parent="RoofStructures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+mesh = SubResource("CylinderMesh_antenna")
+
+[node name="Balconies" type="Node3D" parent="."]
+
+[node name="Balcony1" type="CSGBox3D" parent="Balconies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4, 5.5)
+size = Vector3(2, 0.2, 1)
+
+[node name="Railing1" type="CSGBox3D" parent="Balconies/Balcony1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
+size = Vector3(2, 1, 0.1)
+
+[node name="Balcony2" type="CSGBox3D" parent="Balconies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 14, 5.5)
+size = Vector3(2, 0.2, 1)
+
+[node name="Railing2" type="CSGBox3D" parent="Balconies/Balcony2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.4)
+size = Vector3(2, 1, 0.1)
+
+[node name="BuildingNumber" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 3, 5.6)
+text = "42"
+font_size = 64

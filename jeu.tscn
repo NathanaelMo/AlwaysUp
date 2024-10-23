@@ -1,29 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://plateformes/plateformes_immobiles/sol.tscn" id="1_7reem"]
+[ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
 [ext_resource type="PackedScene" uid="uid://f4l2rjdekybr" path="res://joueur/player.tscn" id="2_8kgaq"]
+[ext_resource type="PackedScene" uid="uid://bjuh4q1jd5enr" path="res://autres/chrono.tscn" id="2_bk2hb"]
 [ext_resource type="PackedScene" uid="uid://8osy21oc6d3f" path="res://lumières/directional_light_3d.tscn" id="3_22anu"]
-[ext_resource type="Script" path="res://autres/label.gd" id="5_ae6dp"]
-[ext_resource type="Script" path="res://autres/chrono.gd" id="12_be1we"]
 
 [node name="Jeu" type="Node3D"]
 
-[node name="Sol" parent="." instance=ExtResource("1_7reem")]
+[node name="Hauteur" parent="." instance=ExtResource("1_f8j84")]
+player = NodePath("../Player")
 
-[node name="Hauteur" type="Label" parent="."]
-offset_right = 92.0
-offset_bottom = 24.0
-script = ExtResource("5_ae6dp")
-
-[node name="Chrono" type="Label" parent="."]
-offset_left = 1055.0
-offset_right = 1151.0
-offset_bottom = 39.0
-horizontal_alignment = 2
-script = ExtResource("12_be1we")
+[node name="Chrono" parent="." instance=ExtResource("2_bk2hb")]
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.86902, 2.73036, -3.53887)
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("3_22anu")]
 transform = Transform3D(0.785695, 0.618614, -3.75509e-08, -0.235256, 0.298796, 0.924865, 0.572135, -0.726662, 0.380295, 10.7152, 87.1449, -12.9458)
+
+[node name="Sol" parent="." instance=ExtResource("1_7reem")]

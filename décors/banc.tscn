@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3b26us1jmx6p"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_seat"]
+size = Vector3(2, 0.1, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.45, 0.3, 0.15, 1)
+roughness = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_leg"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bench"]
+size = Vector3(2, 1, 0.6)
+
+[node name="StreetBench" type="StaticBody3D"]
+
+[node name="BenchSeat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_seat")
+surface_material_override/0 = SubResource("StandardMaterial3D_wood")
+
+[node name="BenchBack" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.01979, -0.00410071, -0.00337077, 0.00328284, -0.0208572, 1.01958, -0.00425129, -0.999774, -0.0212565, 0, 0.86489, -0.25)
+mesh = SubResource("BoxMesh_seat")
+surface_material_override/0 = SubResource("StandardMaterial3D_wood")
+
+[node name="Legs" type="Node3D" parent="."]
+
+[node name="Leg1" type="MeshInstance3D" parent="Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.25, 0.2)
+mesh = SubResource("CylinderMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Leg2" type="MeshInstance3D" parent="Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.25, 0.2)
+mesh = SubResource("CylinderMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Leg3" type="MeshInstance3D" parent="Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0.25, -0.2)
+mesh = SubResource("CylinderMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Leg4" type="MeshInstance3D" parent="Legs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0.25, -0.2)
+mesh = SubResource("CylinderMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_bench")

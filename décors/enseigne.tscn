@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://store_sign"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sign"]
+size = Vector3(3, 0.8, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_back"]
+albedo_color = Color(0.15, 0.15, 0.15, 1)
+metallic = 0.5
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_support"]
+size = Vector3(0.1, 0.4, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_text"]
+albedo_color = Color(0.9, 0.9, 0.1, 1)
+emission_enabled = true
+emission = Color(0.9, 0.9, 0.1, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sign"]
+size = Vector3(3, 0.8, 0.1)
+
+[sub_resource type="Animation" id="Animation_blink"]
+resource_name = "blink"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SignLight:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.2, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sign"]
+_data = {
+"blink": SubResource("Animation_blink")
+}
+
+[node name="StoreSign" type="StaticBody3D"]
+
+[node name="SignBack" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_sign")
+surface_material_override/0 = SubResource("StandardMaterial3D_back")
+
+[node name="Support1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -0.2, 0.1)
+mesh = SubResource("BoxMesh_support")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Support2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, -0.2, 0.1)
+mesh = SubResource("BoxMesh_support")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SignText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1)
+text = "BOUTIQUE"
+font_size = 64
+outline_size = 8
+material_override = SubResource("StandardMaterial3D_text")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_sign")
+
+[node name="SignLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+light_color = Color(0.9, 0.9, 0.1, 1)
+light_energy = 0.8
+omni_range = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "blink"
+libraries = {
+"": SubResource("AnimationLibrary_sign")
+}

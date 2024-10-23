@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://plateformes/plateformes_immobiles/plateforme_retrecissante.gd" id="1_script"]
+[ext_resource type="Script" path="res://plateformes/plateformes_immobiles/scripts/plateforme_retrecissante.gd" id="1_script"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_new"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0g61dqryxfyj"]
 
-[ext_resource type="Script" path="res://plateformes/plateformes_mobiles/plateforme_monte.gd" id="1_81g7j"]
+[ext_resource type="Script" path="res://plateformes/plateformes_mobiles/scripts/plateforme_monte.gd" id="1_81g7j"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_k2bho"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bl7fu6sba4qrh"]
 
-[ext_resource type="Script" path="res://plateformes/plateformes_immobiles/plateforme_clignote.gd" id="1_lrhht"]
+[ext_resource type="Script" path="res://plateformes/plateformes_immobiles/scripts/plateforme_clignote.gd" id="1_lrhht"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3g1kr"]
 

@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://trash_bin"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bin"]
+top_radius = 0.3
+bottom_radius = 0.25
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.25, 0.25, 0.25, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="TorusMesh" id="TorusMesh_rim"]
+inner_radius = 0.28
+outer_radius = 0.31
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_lid"]
+top_radius = 0.31
+bottom_radius = 0.31
+height = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lid"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 0.7
+roughness = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bin"]
+height = 0.8
+radius = 0.3
+
+[node name="TrashBin" type="StaticBody3D"]
+
+[node name="Bin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_bin")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Rim" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("TorusMesh_rim")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="Lid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825, 0)
+mesh = SubResource("CylinderMesh_lid")
+surface_material_override/0 = SubResource("StandardMaterial3D_lid")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("CylinderShape3D_bin")
+
+[node name="Logo" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.5, -0.26)
+text = ":recycle:"
+font_size = 32

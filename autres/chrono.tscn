@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjuh4q1jd5enr"]
+
+[ext_resource type="Script" path="res://autres/script/chrono.gd" id="1_gjfa4"]
+
+[node name="Chrono" type="Label"]
+offset_left = 1055.0
+offset_right = 1151.0
+offset_bottom = 39.0
+horizontal_alignment = 2
+script = ExtResource("1_gjfa4")
