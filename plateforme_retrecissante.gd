@@ -1,8 +1,8 @@
 extends StaticBody3D
 
-@export var shrink_time : float = 3.0
+@export var shrink_time : float = 2.0
 @export var min_scale : float = 0.2
-@export var reset_time : float = 1.0
+@export var reset_time : float = 0.2
 
 var original_scale : Vector3
 var shrinking : bool = false

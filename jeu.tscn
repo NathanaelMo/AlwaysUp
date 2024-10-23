@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=17 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://f4l2rjdekybr" path="res://player.tscn" id="2_8kgaq"]
@@ -12,10 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://b0g61dqryxfyj" path="res://plateforme_cube_qui_monte.tscn" id="10_h4x0n"]
 [ext_resource type="PackedScene" uid="uid://bpb3s8w68coln" path="res://faucheuse.tscn" id="11_drs1d"]
 [ext_resource type="Script" path="res://chrono.gd" id="12_be1we"]
-[ext_resource type="PackedScene" uid="uid://7w0ksx8avq5d" path="res://boxe.tscn" id="13_5gpwy"]
-[ext_resource type="PackedScene" uid="uid://bcyo6rqx6j54x" path="res://boxeInverse.tscn" id="14_ib5mu"]
-[ext_resource type="PackedScene" path="res://plateforme_retrecissante.tscn" id="15_new1"]
-[ext_resource type="PackedScene" path="res://plateforme_rebondissante.tscn" id="16_new2"]
+[ext_resource type="PackedScene" uid="uid://bcyo6rqx6j54x" path="res://boxe_qui_pousse_inverse.tscn" id="15_81e2w"]
+[ext_resource type="PackedScene" uid="uid://7w0ksx8avq5d" path="res://boxe_qui_pousse.tscn" id="16_new3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_qyqik"]
 
@@ -26,7 +24,7 @@
 [node name="Sol" parent="." instance=ExtResource("1_7reem")]
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2607, 4.65234, 0.656548)
+transform = Transform3D(1, 0, 0, 0, 0.991319, -0.131478, 0, 0.131478, 0.991319, 70.4118, 83.0003, -96.5194)
 
 [node name="DirectionalLight3D" parent="." instance=ExtResource("3_22anu")]
 
@@ -75,9 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6692, 27.2675, 67.7273)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.6205, 30.1957, 70.0128)
 start_delay = 2.0
 
-[node name="PlateformeCubeQuiBouge2" parent="." instance=ExtResource("10_h4x0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9338, 30.7354, 55.4262)
-
 [node name="plateforme longue" type="StaticBody3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 80, 46.1302, 53.6064, 1.36033)
 
@@ -90,20 +85,6 @@ shape = SubResource("BoxShape3D_ist5w")
 metadata/_edit_lock_ = true
 
 [node name="faucheuse" parent="." instance=ExtResource("11_drs1d")]
-
-[node name="Boxe" parent="." instance=ExtResource("13_5gpwy")]
-
-[node name="Boxe2" parent="." instance=ExtResource("13_5gpwy")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 38.8109, 58.4925, 7.9323)
-
-[node name="Boxe3" parent="." instance=ExtResource("13_5gpwy")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 38.8109, 58.4925, -21.2992)
-
-[node name="Boxe5" parent="." instance=ExtResource("14_ib5mu")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, 23.1338)
-
-[node name="Boxe6" parent="." instance=ExtResource("14_ib5mu")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 53.5155, 58.1881, -6.36513)
 
 [node name="PlateformeCube10" parent="." instance=ExtResource("4_854fk")]
 transform = Transform3D(1, 0, 0, 0, 0.121052, 0.998167, 0, -1.99633, 0.0605259, 46.5912, 52.46, -49.1326)
@@ -125,30 +106,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.5912, 75.4773, -95.8699)
 start_delay = 1.0
 
 [node name="PlateformeCubeQuiMonte2" parent="." instance=ExtResource("10_h4x0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5912, 80.4773, -95.8699)
-
-[node name="faucheuse2" parent="." instance=ExtResource("11_drs1d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.5912, 85.4773, -95.8699)
-
-[node name="Boxe7" parent="." instance=ExtResource("13_5gpwy")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 76.5912, 90.4773, -95.8699)
-
-[node name="Boxe8" parent="." instance=ExtResource("14_ib5mu")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 86.5912, 95.4773, -95.8699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.7409, 75.8379, -95.8699)
+starts_up = false
 
 [node name="PlateformeCube13" parent="." instance=ExtResource("4_854fk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.5912, 100.477, -95.8699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.601, 78.8802, -85.1462)
 
-[node name="PlateformeRetrecissante1" parent="." instance=ExtResource("15_new1")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 106.591, 105.477, -95.8699)
+[node name="BlocMobile" parent="." instance=ExtResource("15_81e2w")]
+transform = Transform3D(6.60517, 0, 0, 0, 8.87225, 0, 0, 0, 6.32556, 53.732, 60.5792, 25)
 
-[node name="PlateformeRebondissante1" parent="." instance=ExtResource("16_new2")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 116.591, 110.477, -95.8699)
+[node name="BlocMobile4" parent="." instance=ExtResource("15_81e2w")]
+transform = Transform3D(6.60517, 0, 0, 0, 8.87225, 0, 0, 0, 6.32556, 53.2729, 60.6856, -4.93921)
 
-[node name="PlateformeRetrecissante2" parent="." instance=ExtResource("15_new1")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 126.591, 115.477, -95.8699)
-shrink_time = 2.0
-min_scale = 0.1
-
-[node name="PlateformeRebondissante2" parent="." instance=ExtResource("16_new2")]
-transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 136.591, 120.477, -95.8699)
+[node name="BlocMobile2" parent="." instance=ExtResource("16_new3")]
+transform = Transform3D(8.69889, 0, 0, 0, 11.6846, 0, 0, 0, 8.33065, 38.8143, 59.6856, 9.85941)
