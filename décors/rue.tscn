@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/route.tscn" id="1_ttx4s"]
 [ext_resource type="PackedScene" uid="uid://c2xvub7lt4gql" path="res://décors/eclerage.tscn" id="2_5fuk8"]
-[ext_resource type="PackedScene" uid="uid://cl0sqst5juxin" path="res://décors/lampadaire.tscn" id="3_p4qgl"]
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/lampadaire.tscn" id="3_p4qgl"]
 [ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/trottoir.tscn" id="4_o7uqw"]
 
-[node name="Avenue" type="Node3D"]
+[node name="Rue" type="Node3D"]
 
 [node name="Route" parent="." instance=ExtResource("1_ttx4s")]
 transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 4.53504, 0.0913601, 0.746186)

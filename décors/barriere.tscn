@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://b568eh4ppcxvy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_12345"]
+size = Vector3(0.1, 1.2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67890"]
+albedo_color = Color(0.6, 0.3, 0.1, 1)
+roughness = 0.8
+clearcoat_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abcde"]
+size = Vector3(2.2, 1.2, 0.2)
+
+[node name="Barriere" type="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="PoteauGauche" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.6, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="PoteauCental" type="MeshInstance3D" parent="."]
+transform = Transform3D(19.7703, 0, 0, 0, 0.941096, 0, 0, 0, 0.576537, -0.0180414, 0.6, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="PoteauDroit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.6, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="PlancheHaute" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1.59943, 0, 1, -6.99134e-08, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="PlancheMilieu" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1.7002, 0, 1, -7.43181e-08, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="PlancheBasse" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1.72976, 0, 1, -7.56104e-08, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("BoxMesh_12345")
+surface_material_override/0 = SubResource("StandardMaterial3D_67890")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_abcde")

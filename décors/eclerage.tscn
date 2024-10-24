@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2xvub7lt4gql"]
 
-[ext_resource type="PackedScene" uid="uid://cl0sqst5juxin" path="res://décors/lampadaire.tscn" id="1_q2d3n"]
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/lampadaire.tscn" id="1_q2d3n"]
 
 [node name="eclerage" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.50476, 19.2299)

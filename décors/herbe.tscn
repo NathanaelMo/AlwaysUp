@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://4kpvhedn33u0"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_v8p4r"]
+subdivide_width = 32
+subdivide_depth = 32
+orientation = 1
+
+[sub_resource type="Shader" id="Shader_k2m4p"]
+code = "shader_type spatial;
+
+uniform vec3 grass_color : source_color = vec3(0.2, 0.5, 0.1);
+uniform vec3 grass_color_2 : source_color = vec3(0.1, 0.4, 0.05);
+uniform float grass_height : hint_range(0.0, 2.0) = 0.5;
+uniform sampler2D noise_texture;
+
+varying vec3 vertex_position;
+
+void vertex() {
+    vertex_position = VERTEX;
+    
+    // Add static displacement for grass blades
+    vec2 noise_uv = UV * 10.0;
+    float noise = texture(noise_texture, noise_uv).r;
+    
+    // Calculate grass height with noise
+    float height = grass_height * (1.0 + noise * 0.5);
+    
+    // Apply height variation
+    VERTEX.y += height * smoothstep(0.0, 0.3, UV.y);
+}
+
+void fragment() {
+    // Calculate base color with variation
+    float noise = texture(noise_texture, UV * 5.0).r;
+    vec3 color = mix(grass_color, grass_color_2, noise);
+    
+    // Add shading based on height
+    float height_factor = smoothstep(0.0, 1.0, vertex_position.y / grass_height);
+    color = mix(color * 0.7, color, height_factor);
+    
+    // Add some ambient occlusion at the base
+    float ao = smoothstep(0.0, 0.4, UV.y);
+    color *= mix(0.5, 1.0, ao);
+    
+    ALBEDO = color;
+    ROUGHNESS = 0.9;
+    SPECULAR = 0.1;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ru2vx"]
+frequency = 0.05
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oq5yt"]
+seamless = true
+noise = SubResource("FastNoiseLite_ru2vx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8m3p"]
+render_priority = 0
+shader = SubResource("Shader_k2m4p")
+shader_parameter/grass_color = Color(0.2, 0.5, 0.1, 1)
+shader_parameter/grass_color_2 = Color(0.1, 0.4, 0.05, 1)
+shader_parameter/grass_height = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_oq5yt")
+
+[node name="Grass" type="Node3D"]
+
+[node name="GrassPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("QuadMesh_v8p4r")
+surface_material_override/0 = SubResource("ShaderMaterial_d8m3p")
