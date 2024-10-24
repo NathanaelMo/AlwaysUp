@@ -1,0 +1,404 @@
+[gd_scene load_steps=16 format=3 uid="uid://djfmhialy6uix"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_sidewalk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_concrete"]
+albedo_color = Color(0.85, 0.85, 0.85, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_curb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_curb"]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sidewalk"]
+size = Vector3(4, 0.3, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_curb"]
+size = Vector3(0.3, 0.5, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_drain"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_grate"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grate"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.9
+roughness = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drain"]
+size = Vector3(0.4, 0.1, 1.2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sewer"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_ring"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_holes"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sewer"]
+height = 0.1
+radius = 0.4
+
+[node name="CityStreet" type="Node3D"]
+transform = Transform3D(1.00018, 0, 0, 0, 1.00018, 0, 0, 0, 1.00018, 0, 0, 0)
+
+[node name="Sidewalk" type="StaticBody3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 1.018, 0, 0, 0, 1.018, 0, 0, 0)
+
+[node name="SidewalkMesh" type="MeshInstance3D" parent="Sidewalk"]
+transform = Transform3D(4.04526, 0, 0, 0, 0.696842, 0, 0, 0, 101.131, 0, 0.116559, 0)
+mesh = SubResource("BoxMesh_sidewalk")
+surface_material_override/0 = SubResource("StandardMaterial3D_concrete")
+
+[node name="CurbMesh" type="MeshInstance3D" parent="Sidewalk"]
+transform = Transform3D(0.31, 0, 0, 0, 0.6, 0, 0, 0, 101.177, -2.15, 0.184665, 0)
+mesh = SubResource("BoxMesh_curb")
+surface_material_override/0 = SubResource("StandardMaterial3D_curb")
+
+[node name="SidewalkCollision" type="CollisionShape3D" parent="Sidewalk"]
+transform = Transform3D(1, 0, 0, 0, 1.72302, 0, 0, 0, 1, 0, 0.15, 0)
+shape = SubResource("BoxShape3D_sidewalk")
+
+[node name="CurbCollision" type="CollisionShape3D" parent="Sidewalk"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15, 0.25, 0)
+shape = SubResource("BoxShape3D_curb")
+
+[node name="StreetDrain1" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0167718, -0.999859, 0, 0.999859, 0.0167718, 0, 0, 0, 0.999999, -1.85, 0.177, -50)
+
+[node name="DrainBaseMesh" type="MeshInstance3D" parent="StreetDrain1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_drain")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="GrateMesh1" type="MeshInstance3D" parent="StreetDrain1"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh2" type="MeshInstance3D" parent="StreetDrain1"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh3" type="MeshInstance3D" parent="StreetDrain1"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh4" type="MeshInstance3D" parent="StreetDrain1"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="DrainCollision" type="CollisionShape3D" parent="StreetDrain1"]
+shape = SubResource("BoxShape3D_drain")
+
+[node name="StreetDrain2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0167718, -0.999859, 0, 0.999859, 0.0167718, 0, 0, 0, 0.999999, -1.85, 0.177, -25)
+
+[node name="DrainBaseMesh" type="MeshInstance3D" parent="StreetDrain2"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_drain")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="GrateMesh1" type="MeshInstance3D" parent="StreetDrain2"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh2" type="MeshInstance3D" parent="StreetDrain2"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh3" type="MeshInstance3D" parent="StreetDrain2"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh4" type="MeshInstance3D" parent="StreetDrain2"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="DrainCollision" type="CollisionShape3D" parent="StreetDrain2"]
+shape = SubResource("BoxShape3D_drain")
+
+[node name="StreetDrain3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0167718, -0.999859, 0, 0.999859, 0.0167718, 0, 0, 0, 0.999999, -1.85, 0.177, 0)
+
+[node name="DrainBaseMesh" type="MeshInstance3D" parent="StreetDrain3"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_drain")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="GrateMesh1" type="MeshInstance3D" parent="StreetDrain3"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh2" type="MeshInstance3D" parent="StreetDrain3"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh3" type="MeshInstance3D" parent="StreetDrain3"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh4" type="MeshInstance3D" parent="StreetDrain3"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="DrainCollision" type="CollisionShape3D" parent="StreetDrain3"]
+shape = SubResource("BoxShape3D_drain")
+
+[node name="SewerCover1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, -50)
+
+[node name="BaseMesh" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sewer")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="RingMesh" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0.02, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern1" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern2" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern3" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern4" type="MeshInstance3D" parent="SewerCover1"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SewerCollision" type="CollisionShape3D" parent="SewerCover1"]
+shape = SubResource("CylinderShape3D_sewer")
+
+[node name="SewerCover2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, -25)
+
+[node name="BaseMesh" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sewer")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="RingMesh" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0.02, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern1" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern2" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern3" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern4" type="MeshInstance3D" parent="SewerCover2"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SewerCollision" type="CollisionShape3D" parent="SewerCover2"]
+shape = SubResource("CylinderShape3D_sewer")
+
+[node name="SewerCover3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 0)
+
+[node name="BaseMesh" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sewer")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="RingMesh" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0.02, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern1" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern2" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern3" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern4" type="MeshInstance3D" parent="SewerCover3"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SewerCollision" type="CollisionShape3D" parent="SewerCover3"]
+shape = SubResource("CylinderShape3D_sewer")
+
+[node name="SewerCover4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 25)
+
+[node name="BaseMesh" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sewer")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="RingMesh" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0.02, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern1" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern2" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern3" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern4" type="MeshInstance3D" parent="SewerCover4"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SewerCollision" type="CollisionShape3D" parent="SewerCover4"]
+shape = SubResource("CylinderShape3D_sewer")
+
+[node name="StreetDrain4" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0167718, -0.999859, 0, 0.999859, 0.0167718, 0, 0, 0, 0.999999, -1.85, 0.177, 25)
+
+[node name="DrainBaseMesh" type="MeshInstance3D" parent="StreetDrain4"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_drain")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="GrateMesh1" type="MeshInstance3D" parent="StreetDrain4"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh2" type="MeshInstance3D" parent="StreetDrain4"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh3" type="MeshInstance3D" parent="StreetDrain4"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh4" type="MeshInstance3D" parent="StreetDrain4"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="DrainCollision" type="CollisionShape3D" parent="StreetDrain4"]
+shape = SubResource("BoxShape3D_drain")
+
+[node name="StreetDrain5" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0167718, -0.999859, 0, 0.999859, 0.0167718, 0, 0, 0, 0.999999, -1.85, 0.177, 50)
+
+[node name="DrainBaseMesh" type="MeshInstance3D" parent="StreetDrain5"]
+transform = Transform3D(0.4, 0, 0, 0, 0.1, 0, 0, 0, 1.2, 0, 0, 0)
+mesh = SubResource("BoxMesh_drain")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="GrateMesh1" type="MeshInstance3D" parent="StreetDrain5"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh2" type="MeshInstance3D" parent="StreetDrain5"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, -0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh3" type="MeshInstance3D" parent="StreetDrain5"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.05, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="GrateMesh4" type="MeshInstance3D" parent="StreetDrain5"]
+transform = Transform3D(0.03, 0, 0, 0, 0.12, 0, 0, 0, 1, 0.15, 0.02, 0)
+mesh = SubResource("BoxMesh_grate")
+surface_material_override/0 = SubResource("StandardMaterial3D_grate")
+
+[node name="DrainCollision" type="CollisionShape3D" parent="StreetDrain5"]
+shape = SubResource("BoxShape3D_drain")
+
+[node name="SewerCover5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.474, 50)
+
+[node name="BaseMesh" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.8, 0, 0, 0, 0.1, 0, 0, 0, 0.8, 0, 0, 0)
+mesh = SubResource("CylinderMesh_sewer")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="RingMesh" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0, 0.02, 0)
+mesh = SubResource("TorusMesh_ring")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern1" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern2" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, 0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern3" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, -0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="HolePattern4" type="MeshInstance3D" parent="SewerCover5"]
+transform = Transform3D(0.05, 0, 0, 0, 0.12, 0, 0, 0, 0.05, 0.2, 0.02, -0.2)
+mesh = SubResource("CylinderMesh_holes")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="SewerCollision" type="CollisionShape3D" parent="SewerCover5"]
+shape = SubResource("CylinderShape3D_sewer")
