@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cl0sqst5juxin"]
+[gd_scene load_steps=13 format=3 uid="uid://0ifwy73me7jg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pole"]
 top_radius = 0.1

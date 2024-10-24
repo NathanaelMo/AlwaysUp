@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://j4a32fuwreh8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_body"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_white"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_head"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_black"]
+albedo_color = Color(0.1, 0.1, 0.1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ear"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_leg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_roller"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pink"]
+albedo_color = Color(1, 0.8, 0.8, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wheel"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wheel"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
+size = Vector3(2, 2, 2)
+
+[node name="PandaRoller" type="CharacterBody3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 2, 0)
+mesh = SubResource("SphereMesh_body")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 3.2, 0)
+mesh = SubResource("SphereMesh_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="EyePatchLeft" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.2, -0.3, 0.1, 0.5)
+mesh = SubResource("SphereMesh_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_black")
+
+[node name="EyePatchRight" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0.3, 0.1, 0.5)
+mesh = SubResource("SphereMesh_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_black")
+
+[node name="Nose" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0, -0.1, 0.6)
+mesh = SubResource("SphereMesh_head")
+surface_material_override/0 = SubResource("StandardMaterial3D_black")
+
+[node name="EarLeft" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.6, 0.6, 0)
+mesh = SubResource("SphereMesh_ear")
+surface_material_override/0 = SubResource("StandardMaterial3D_black")
+
+[node name="EarRight" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.6, 0.6, 0)
+mesh = SubResource("SphereMesh_ear")
+surface_material_override/0 = SubResource("StandardMaterial3D_black")
+
+[node name="LegFrontLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.8, 0, 0, 0, 0.4, -0.5, 1.2, 0.3)
+mesh = SubResource("CapsuleMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="LegFrontRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.8, 0, 0, 0, 0.4, 0.5, 1.2, 0.3)
+mesh = SubResource("CapsuleMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="LegBackLeft" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.8, 0, 0, 0, 0.4, -0.5, 1.2, -0.3)
+mesh = SubResource("CapsuleMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="LegBackRight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.8, 0, 0, 0, 0.4, 0.5, 1.2, -0.3)
+mesh = SubResource("CapsuleMesh_leg")
+surface_material_override/0 = SubResource("StandardMaterial3D_white")
+
+[node name="RollerFL" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.6, -0.5, 0.2, 0.3)
+mesh = SubResource("CylinderMesh_roller")
+surface_material_override/0 = SubResource("StandardMaterial3D_pink")
+
+[node name="WheelFL1" type="MeshInstance3D" parent="RollerFL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="WheelFL2" type="MeshInstance3D" parent="RollerFL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, -0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="RollerFR" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0.5, 0.2, 0.3)
+mesh = SubResource("CylinderMesh_roller")
+surface_material_override/0 = SubResource("StandardMaterial3D_pink")
+
+[node name="WheelFR1" type="MeshInstance3D" parent="RollerFR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="WheelFR2" type="MeshInstance3D" parent="RollerFR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, -0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="RollerBL" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.6, -0.5, 0.2, -0.3)
+mesh = SubResource("CylinderMesh_roller")
+surface_material_override/0 = SubResource("StandardMaterial3D_pink")
+
+[node name="WheelBL1" type="MeshInstance3D" parent="RollerBL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="WheelBL2" type="MeshInstance3D" parent="RollerBL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, -0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="RollerBR" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0.5, 0.2, -0.3)
+mesh = SubResource("CylinderMesh_roller")
+surface_material_override/0 = SubResource("StandardMaterial3D_pink")
+
+[node name="WheelBR1" type="MeshInstance3D" parent="RollerBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="WheelBR2" type="MeshInstance3D" parent="RollerBR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, -0.4)
+mesh = SubResource("SphereMesh_wheel")
+surface_material_override/0 = SubResource("StandardMaterial3D_wheel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_collision")
