@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2xvub7lt4gql"]
+
+[ext_resource type="PackedScene" uid="uid://cl0sqst5juxin" path="res://décors/lampadaire.tscn" id="1_q2d3n"]
+
+[node name="eclerage" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.50476, 19.2299)
+
+[node name="StreetLamp" parent="." instance=ExtResource("1_q2d3n")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 0, 0, -6.84859)
+
+[node name="StreetLamp2" parent="." instance=ExtResource("1_q2d3n")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 90, 0, -6.849)
+
+[node name="StreetLamp3" parent="." instance=ExtResource("1_q2d3n")]
+transform = Transform3D(-1.20674e-07, 0, 2.76069, 0, 2.76069, 0, -2.76069, 0, -1.20674e-07, 180, 0, -6.849)

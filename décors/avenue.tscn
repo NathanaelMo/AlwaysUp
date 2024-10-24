@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://5o2p0rlkaxtn"]
+
+[ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/route.tscn" id="1_ttx4s"]
+[ext_resource type="PackedScene" uid="uid://c2xvub7lt4gql" path="res://décors/eclerage.tscn" id="2_5fuk8"]
+[ext_resource type="PackedScene" uid="uid://cl0sqst5juxin" path="res://décors/lampadaire.tscn" id="3_p4qgl"]
+[ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/trottoir.tscn" id="4_o7uqw"]
+
+[node name="Avenue" type="Node3D"]
+
+[node name="Route" parent="." instance=ExtResource("1_ttx4s")]
+transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 4.53504, 0.0913601, 0.746186)
+
+[node name="Route2" parent="." instance=ExtResource("1_ttx4s")]
+transform = Transform3D(60.9075, 0, 0, 0, 5.07203, 0, 0, 0, 7.44554, 129.144, 0.0913601, 0.746186)
+
+[node name="eclerage" parent="." instance=ExtResource("2_5fuk8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.267, 19.23)
+
+[node name="eclerage2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.266776, -3.57183)
+
+[node name="StreetLamp" parent="eclerage2" instance=ExtResource("3_p4qgl")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 0, 0, -6.84859)
+
+[node name="StreetLamp2" parent="eclerage2" instance=ExtResource("3_p4qgl")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 90, 0, -6.849)
+
+[node name="StreetLamp3" parent="eclerage2" instance=ExtResource("3_p4qgl")]
+transform = Transform3D(3.29209e-08, 0, -2.76069, 0, 2.76069, 0, 2.76069, 0, 3.29209e-08, 180, 0, -6.849)
+
+[node name="troittoires" type="Node3D" parent="."]
+
+[node name="CityStreet3" parent="troittoires" instance=ExtResource("4_o7uqw")]
+transform = Transform3D(-1.08885e-07, 0, 1.222, 0, 1, 0, -2.491, 0, -5.34153e-08, 129.148, -1.14749e-05, -11.3572)
+
+[node name="CityStreet4" parent="troittoires" instance=ExtResource("4_o7uqw")]
+transform = Transform3D(-1.08885e-07, 0, 1.222, 0, 1, 0, -2.491, 0, -5.34153e-08, 7.237, 0, -11.357)
+
+[node name="troittoires2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24.3954)
+
+[node name="CityStreet3" parent="troittoires2" instance=ExtResource("4_o7uqw")]
+transform = Transform3D(2.97049e-08, 0, -1.222, 0, 1, 0, 2.491, 0, 1.45722e-08, 129.148, -1.14749e-05, -11.3572)
+
+[node name="CityStreet4" parent="troittoires2" instance=ExtResource("4_o7uqw")]
+transform = Transform3D(2.97049e-08, 0, -1.222, 0, 1, 0, 2.491, 0, 1.45722e-08, 7.237, 0, -11.357)
