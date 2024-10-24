@@ -1,0 +1,232 @@
+[gd_scene load_steps=26 format=3 uid="uid://b3g6a8l7l7f2e"]
+
+[ext_resource type="Shader" path="res://décors/building_facade.gdshader" id="1_shader"]
+[ext_resource type="Script" path="res://décors/lumières.gd" id="lights_script"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_building"]
+size = Vector3(8, 15, 8)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_building"]
+render_priority = 0
+shader = ExtResource("1_shader")
+shader_parameter/base_color = Color(0.9, 0.85, 0.8, 1)
+shader_parameter/dark_color = Color(0.7, 0.65, 0.6, 1)
+shader_parameter/roughness = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_windows"]
+size = Vector3(1.2, 1.5, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_windows"]
+albedo_color = Color(0.2, 0.4, 0.6, 1)
+metallic = 0.7
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_roof"]
+size = Vector3(9, 0.5, 9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
+albedo_color = Color(0.8, 0.8, 0.75, 1)
+roughness = 0.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
+size = Vector3(8, 15, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_entrance"]
+size = Vector3(2, 3, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_entrance"]
+albedo_color = Color(0.7, 0.7, 0.7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_door"]
+size = Vector3(1.2, 2.2, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_door"]
+albedo_color = Color(0.3, 0.2, 0.15, 1)
+metallic = 0.3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_entrance"]
+size = Vector3(2, 3, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fixture"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 1.0
+roughness = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_mount"]
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shade"]
+top_radius = 0.3
+bottom_radius = 0.15
+height = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glass"]
+transparency = 1
+albedo_color = Color(1, 0.95, 0.8, 0.3)
+emission_enabled = true
+emission = Color(1, 0.95, 0.8, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_c4mqu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_antenna"]
+top_radius = 0.05
+bottom_radius = 0.08
+
+[sub_resource type="SphereMesh" id="SphereMesh_ldr1g"]
+radius = 0.15
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arhko"]
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_87roh"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nkljq"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.8
+roughness = 0.2
+
+[node name="SmallBuilding" type="StaticBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="BuildingMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+mesh = SubResource("BoxMesh_building")
+surface_material_override/0 = SubResource("ShaderMaterial_building")
+
+[node name="Windows" type="Node3D" parent="."]
+
+[node name="WindowRow1" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowRow2" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowRow3" type="Node3D" parent="Windows"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+
+[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4.1)
+mesh = SubResource("BoxMesh_windows")
+surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.25, 0)
+mesh = SubResource("BoxMesh_roof")
+surface_material_override/0 = SubResource("StandardMaterial3D_walls")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_collision")
+
+[node name="Entrance" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 4.25)
+
+[node name="EntranceMesh" type="MeshInstance3D" parent="Entrance"]
+mesh = SubResource("BoxMesh_entrance")
+surface_material_override/0 = SubResource("StandardMaterial3D_entrance")
+
+[node name="Door" type="MeshInstance3D" parent="Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.3)
+mesh = SubResource("BoxMesh_door")
+surface_material_override/0 = SubResource("StandardMaterial3D_door")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entrance"]
+shape = SubResource("BoxShape3D_entrance")
+
+[node name="EntranceLampAssembly" type="Node3D" parent="Entrance"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 1.16278)
+
+[node name="EntranceLight" type="SpotLight3D" parent="Entrance/EntranceLampAssembly"]
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 8.026
+spot_range = 53.552
+spot_angle = 75.0
+spot_angle_attenuation = 0.8
+
+[node name="LampFixture" type="MeshInstance3D" parent="Entrance/EntranceLampAssembly"]
+mesh = SubResource("CylinderMesh_fixture")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="LampMount" type="MeshInstance3D" parent="Entrance/EntranceLampAssembly"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+mesh = SubResource("BoxMesh_mount")
+surface_material_override/0 = SubResource("StandardMaterial3D_metal")
+
+[node name="LampShade" type="MeshInstance3D" parent="Entrance/EntranceLampAssembly"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -0.1, 0)
+mesh = SubResource("CylinderMesh_shade")
+surface_material_override/0 = SubResource("StandardMaterial3D_glass")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Entrance/EntranceLampAssembly"]
+transform = Transform3D(0.0409917, 0, 0, 0, 0.0321631, 0, 0, 0, 0.924672, 0, 0.241724, -0.487303)
+mesh = SubResource("BoxMesh_c4mqu")
+
+[node name="BuildingNumber" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 4.55)
+modulate = Color(0.340339, 0.340339, 0.340339, 1)
+text = "23"
+font_size = 48
+
+[node name="RoofStructures" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.5, 0)
+script = ExtResource("lights_script")
+
+[node name="Antenna" type="MeshInstance3D" parent="RoofStructures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3)
+mesh = SubResource("CylinderMesh_antenna")
+
+[node name="RoofLights" type="Node3D" parent="RoofStructures"]
+
+[node name="WarningLight1" type="OmniLight3D" parent="RoofStructures/RoofLights"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -3.00879, 1.30328, -2.9872)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+omni_range = 25.0
+omni_attenuation = 1.2
+
+[node name="WarningBulb" type="MeshInstance3D" parent="RoofStructures/RoofLights/WarningLight1"]
+transform = Transform3D(2.92647, 0, 0, 0, 2.92647, 0, 0, 0, 2.92647, 0, 0.192657, 0)
+mesh = SubResource("SphereMesh_ldr1g")
+surface_material_override/0 = SubResource("StandardMaterial3D_arhko")
+
+[node name="WarningSupport" type="MeshInstance3D" parent="RoofStructures/RoofLights/WarningLight1"]
+transform = Transform3D(2.92647, 0, 0, 0, 2.92647, 0, 0, 0, 2.92647, 0, -0.392639, 0)
+mesh = SubResource("CylinderMesh_87roh")
+surface_material_override/0 = SubResource("StandardMaterial3D_nkljq")
