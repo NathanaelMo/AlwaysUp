@@ -1,0 +1,196 @@
+[gd_scene load_steps=17 format=3 uid="uid://qog2wfy3o6e7"]
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node3D
+
+@export var rotation_speed = 0.1  # Rotations par seconde
+
+func _process(delta):
+    rotate_y(PI/2 * rotation_speed * delta)
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]
+albedo_color = Color(0.3, 0.3, 0.3, 1)
+metallic = 0.8
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.2, 0.2, 0.2, 1)
+emission_energy_multiplier = 0.2
+normal_enabled = true
+normal_scale = 0.5
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5"]
+size = Vector3(6, 1, 6)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_metal"]
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pillar"]
+albedo_color = Color(0.945098, 0.878431, 0.0784314, 1)
+metallic = 0.8
+metallic_specular = 0.7
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.8, 0.7, 0, 1)
+emission_energy_multiplier = 0.2
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_metal")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(2, 30, 2)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rust"]
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arm"]
+albedo_color = Color(0.945098, 0.878431, 0.0784314, 1)
+metallic = 0.8
+metallic_specular = 0.7
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.8, 0.7, 0, 1)
+emission_energy_multiplier = 0.2
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_rust")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2"]
+size = Vector3(20, 1, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_weight"]
+seamless = true
+as_normal_map = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_weight"]
+albedo_color = Color(0.4, 0.4, 0.4, 1)
+metallic = 0.9
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.2, 0.2, 0.2, 1)
+emission_energy_multiplier = 0.2
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_weight")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3"]
+size = Vector3(4, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cable"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 0.9
+roughness = 0.3
+normal_enabled = true
+normal_scale = 0.2
+uv1_scale = Vector3(0.1, 1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1"]
+height = 10.0
+radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hook"]
+albedo_color = Color(0.8, 0.1, 0.1, 1)
+metallic = 0.8
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.5, 0.1, 0.1, 1)
+emission_energy_multiplier = 0.3
+normal_enabled = true
+normal_scale = 0.5
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4"]
+size = Vector3(0.5, 1, 0.5)
+
+[node name="Crane" type="StaticBody3D"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+script = SubResource("GDScript_1")
+
+[node name="Base" type="CSGBox3D" parent="."]
+size = Vector3(6, 1, 6)
+material = SubResource("StandardMaterial3D_base")
+
+[node name="BaseCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5")
+
+[node name="VerticalPillar" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+size = Vector3(2, 30, 2)
+material = SubResource("StandardMaterial3D_pillar")
+
+[node name="PillarCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
+shape = SubResource("BoxShape3D_1")
+
+[node name="Arm" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 29, 0)
+size = Vector3(20, 1, 1)
+material = SubResource("StandardMaterial3D_arm")
+
+[node name="ArmCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 29, 0)
+shape = SubResource("BoxShape3D_2")
+
+[node name="Counterweight" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 29, 0)
+size = Vector3(4, 2, 2)
+material = SubResource("StandardMaterial3D_weight")
+
+[node name="CounterweightCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 29, 0)
+shape = SubResource("BoxShape3D_3")
+
+[node name="Cable" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 24, 0)
+radius = 0.1
+height = 10.0
+material = SubResource("StandardMaterial3D_cable")
+
+[node name="CableCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 24, 0)
+shape = SubResource("CylinderShape3D_1")
+
+[node name="Hook" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 19, 0)
+size = Vector3(0.5, 1, 0.5)
+material = SubResource("StandardMaterial3D_hook")
+
+[node name="HookCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 19, 0)
+shape = SubResource("BoxShape3D_4")
+
+[node name="ArmLight1" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5, 29, 0)
+light_color = Color(1, 0.9, 0.8, 1)
+light_energy = 3.0
+spot_range = 20.0
+spot_angle = 30.0
+
+[node name="ArmLight2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 15, 29, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 2.0
+spot_range = 20.0
+spot_angle = 30.0
+
+[node name="WarningLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 29, 0)
+light_color = Color(1, 0.9, 0.7, 1)
+light_energy = 1.5
+omni_range = 10.0
+
+[node name="PillarLight2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
+light_color = Color(1, 0.9, 0.7, 1)
+light_energy = 2.0
