@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://f2ytfci3xexd"]
 
-[ext_resource type="Shader" path="res://décors/commercial_facade.gdshader" id="1_shader"]
-[ext_resource type="PackedScene" uid="uid://bfy2kkuxqqfyu" path="res://décors/enseigne.tscn" id="2_abi48"]
+[ext_resource type="Shader" path="res://décors/constructions/batiments/shaders/commercial_facade.gdshader" id="1_shader"]
+[ext_resource type="PackedScene" uid="uid://bfy2kkuxqqfyu" path="res://décors/constructions/batiments/enseigne.tscn" id="2_abi48"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_building"]
 size = Vector3(8, 4, 6)

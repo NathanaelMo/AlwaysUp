@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://dnbcf0nmguxix"]
 
-[ext_resource type="Shader" path="res://décors/building_facade.gdshader" id="1_shader"]
-[ext_resource type="Script" path="res://décors/lumières.gd" id="lights_script"]
+[ext_resource type="Shader" path="res://décors/constructions/batiments/shaders/building_facade.gdshader" id="1_shader"]
+[ext_resource type="Script" path="res://décors/constructions/circulations/scripts/lumières.gd" id="lights_script"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_building"]
 size = Vector3(15, 45, 12)

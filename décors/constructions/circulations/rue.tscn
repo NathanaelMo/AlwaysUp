@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://5o2p0rlkaxtn"]
 
-[ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/route.tscn" id="1_ttx4s"]
-[ext_resource type="PackedScene" uid="uid://c2xvub7lt4gql" path="res://décors/eclerage.tscn" id="2_5fuk8"]
-[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/lampadaire.tscn" id="3_p4qgl"]
-[ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/trottoir.tscn" id="4_o7uqw"]
+[ext_resource type="PackedScene" uid="uid://bvcki0eo48nrf" path="res://décors/constructions/circulations/route.tscn" id="1_ttx4s"]
+[ext_resource type="PackedScene" uid="uid://c2xvub7lt4gql" path="res://décors/constructions/circulations/eclerage.tscn" id="2_5fuk8"]
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="3_p4qgl"]
+[ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/constructions/circulations/trottoir.tscn" id="4_o7uqw"]
 
 [node name="Rue" type="Node3D"]
 

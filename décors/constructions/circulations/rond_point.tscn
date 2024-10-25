@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dif3cnvco4yp3"]
 
-[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/lampadaire.tscn" id="1_lamp"]
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="1_lamp"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_0ykaq"]
 inner_radius = 0.7

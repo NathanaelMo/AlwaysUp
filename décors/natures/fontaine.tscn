@@ -1,0 +1,124 @@
+[gd_scene load_steps=13 format=3 uid="uid://dpurvy5s66ifu"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_base"]
+top_radius = 4.0
+bottom_radius = 4.2
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_stone"]
+albedo_color = Color(0.7, 0.7, 0.72, 1)
+metallic = 0.2
+roughness = 0.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_basin"]
+top_radius = 3.5
+bottom_radius = 3.5
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_water"]
+transparency = 1
+albedo_color = Color(0.2, 0.4, 0.8, 0.8)
+metallic = 0.8
+roughness = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_center"]
+top_radius = 0.4
+bottom_radius = 0.6
+height = 1.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ornate"]
+albedo_color = Color(0.75, 0.75, 0.77, 1)
+metallic = 0.3
+roughness = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_dome"]
+radius = 0.3
+height = 0.4
+is_hemisphere = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_spray"]
+top_radius = 0.05
+bottom_radius = 0.2
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spray"]
+transparency = 1
+albedo_color = Color(0.8, 0.9, 1, 0.3)
+emission_enabled = true
+emission = Color(0.6, 0.8, 1, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0wssj"]
+
+[sub_resource type="Animation" id="Animation_water"]
+resource_name = "water_flow"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSpray:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 0.9, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fountain"]
+_data = {
+"water_flow": SubResource("Animation_water")
+}
+
+[node name="Fountain" type="StaticBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_base")
+surface_material_override/0 = SubResource("StandardMaterial3D_stone")
+
+[node name="WaterBasin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+mesh = SubResource("CylinderMesh_basin")
+surface_material_override/0 = SubResource("StandardMaterial3D_water")
+
+[node name="CenterPiece" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_center")
+surface_material_override/0 = SubResource("StandardMaterial3D_ornate")
+
+[node name="TopDome" type="MeshInstance3D" parent="CenterPiece"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("SphereMesh_dome")
+surface_material_override/0 = SubResource("StandardMaterial3D_ornate")
+
+[node name="WaterSpray" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+mesh = SubResource("CylinderMesh_spray")
+surface_material_override/0 = SubResource("StandardMaterial3D_spray")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.6, 0.8, 1, 1)
+light_energy = 2.0
+omni_range = 8.0
+omni_attenuation = 1.5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4, 0)
+light_color = Color(0.6, 0.8, 1, 1)
+light_energy = 3.0
+spot_range = 8.0
+spot_angle = 30.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(8.00155, 0, 0, 0, 1, 0, 0, 0, 8.01544, 0, 0, 0)
+shape = SubResource("BoxShape3D_0wssj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fountain")
+}
+autoplay = "water_flow"
