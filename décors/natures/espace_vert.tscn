@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2bh6t8jrxdga"]
+
+[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/arbre.tscn" id="1_tree"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_0iemo"]
+
+[sub_resource type="Shader" id="Shader_k2m4p"]
+code = "shader_type spatial;
+
+uniform vec3 grass_color : source_color = vec3(0.2, 0.5, 0.1);
+uniform vec3 grass_color_2 : source_color = vec3(0.1, 0.4, 0.05);
+uniform float grass_height : hint_range(0.0, 2.0) = 0.5;
+uniform sampler2D noise_texture;
+
+varying vec3 vertex_position;
+
+void vertex() {
+    vertex_position = VERTEX;
+    
+    // Add static displacement for grass blades
+    vec2 noise_uv = UV * 10.0;
+    float noise = texture(noise_texture, noise_uv).r;
+    
+    // Calculate grass height with noise
+    float height = grass_height * (1.0 + noise * 0.5);
+    
+    // Apply height variation
+    VERTEX.y += height * smoothstep(0.0, 0.3, UV.y);
+}
+
+void fragment() {
+    // Calculate base color with variation
+    float noise = texture(noise_texture, UV * 5.0).r;
+    vec3 color = mix(grass_color, grass_color_2, noise);
+    
+    // Add shading based on height
+    float height_factor = smoothstep(0.0, 1.0, vertex_position.y / grass_height);
+    color = mix(color * 0.7, color, height_factor);
+    
+    // Add some ambient occlusion at the base
+    float ao = smoothstep(0.0, 0.4, UV.y);
+    color *= mix(0.5, 1.0, ao);
+    
+    ALBEDO = color;
+    ROUGHNESS = 0.9;
+    SPECULAR = 0.1;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ru2vx"]
+frequency = 0.05
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oq5yt"]
+seamless = true
+noise = SubResource("FastNoiseLite_ru2vx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8m3p"]
+render_priority = 0
+shader = SubResource("Shader_k2m4p")
+shader_parameter/grass_color = Color(0.2, 0.5, 0.1, 1)
+shader_parameter/grass_color_2 = Color(0.1, 0.4, 0.05, 1)
+shader_parameter/grass_height = 0.5
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_oq5yt")
+
+[node name="CenterIsland" type="Node3D"]
+transform = Transform3D(1.50598, 0, 0, 0, 1.50598, 0, 0, 0, 1.50598, 0, 0, 0)
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 0.00893691, 0, 0, 0, 200, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_0iemo")
+surface_material_override/0 = SubResource("ShaderMaterial_d8m3p")
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="Tree1" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -57.064, 0, -38.4557)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -41.4028, 0, 8.72761)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -32.8101, 0, -23.1034)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -8.55379, 0, 24.9689)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 2.08883, 0, 54.9841)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -29.1712, 0, 45.8551)
+
+[node name="Tree7" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -68.8038, 0, -8.84061)
+
+[node name="Tree8" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -53.4093, 0, 35.4239)
+
+[node name="Tree9" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 30.3779, 0, 45.8256)
+
+[node name="Tree10" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -5.69385, 0, -7.79751)
+
+[node name="Tree11" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 9.60588, 0, -39.6772)
+
+[node name="Tree12" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 16.0845, 0, 21.8352)
+
+[node name="Tree13" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 55.0241, 0, -22.6872)
+
+[node name="Tree14" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 24.204, 0, -11.2887)
+
+[node name="Tree15" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -10.7571, 0, -61.048)
+
+[node name="Tree16" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 42.1807, 0, -50.1397)
+
+[node name="Tree17" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 55.3418, 0, 15.8988)
+
+[node name="Tree18" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, -33.7697, 0, -63.312)
+
+[node name="Tree19" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(19.8202, 0, 0, 0, 19.8202, 0, 0, 0, 19.8202, 14.125, 0, -67.4414)
