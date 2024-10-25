@@ -1,19 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dif3cnvco4yp3"]
+[gd_scene load_steps=7 format=3 uid="uid://dif3cnvco4yp3"]
 
 [ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="1_lamp"]
+[ext_resource type="PackedScene" uid="uid://cdy13wbpojj33" path="res://décors/natures/espace_vert.tscn" id="2_ey4n2"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_0ykaq"]
 inner_radius = 0.7
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_road"]
-albedo_color = Color(0.12549, 0.12549, 0.12549, 1)
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_7tmld"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marks"]
 
 [node name="RoundRoad" type="Node3D"]
-transform = Transform3D(0.706899, 0, 0, 0, 0.706899, 0, 0, 0, 0.706899, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="MainRoad" type="MeshInstance3D" parent="."]
 transform = Transform3D(289.43, 0, 0, 0, 0.954685, 0, 0, 0, 303.688, 0, 0, 0)
@@ -151,3 +152,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -70.3427, 3.05176e-05, -168.0
 
 [node name="NorthWestLamp4" parent="Lighting" instance=ExtResource("1_lamp")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -293.401, 0, -52.8463)
+
+[node name="CenterIsland" parent="." instance=ExtResource("2_ey4n2")]
+transform = Transform3D(2.1304, 0, 0, 0, 2.1304, 0, 0, 0, 2.1304, 0, 0, 0)

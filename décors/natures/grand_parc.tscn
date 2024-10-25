@@ -1,0 +1,126 @@
+[gd_scene load_steps=6 format=3 uid="uid://n7nj82fu4o0j"]
+
+[ext_resource type="PackedScene" uid="uid://4kpvhedn33u0" path="res://décors/natures/herbe.tscn" id="1_7mtsd"]
+[ext_resource type="PackedScene" uid="uid://bielmceo56l51" path="res://décors/natures/espace_detente.tscn" id="2_npk7a"]
+[ext_resource type="PackedScene" uid="uid://dpurvy5s66ifu" path="res://décors/natures/fontaine.tscn" id="3_31xpj"]
+[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/natures/arbre.tscn" id="4_ulg6g"]
+[ext_resource type="PackedScene" uid="uid://d3b26us1jmx6p" path="res://décors/natures/banc.tscn" id="5_plmj0"]
+
+[node name="GrandParc" type="Node3D"]
+
+[node name="Herbe" type="Node3D" parent="."]
+
+[node name="Grass" parent="Herbe" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 617.737, -2.69279, -18.3013)
+
+[node name="Grass2" parent="Herbe" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 617.737, -2.69279, 16.6339)
+
+[node name="Herbe3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3859, 0, 0)
+
+[node name="Grass" parent="Herbe3" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 617.737, -2.69279, -18.3013)
+
+[node name="Grass2" parent="Herbe3" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 617.737, -2.69279, 16.6339)
+
+[node name="Herbe2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.0952, 0, 0)
+
+[node name="Grass" parent="Herbe2" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 617.737, -2.69279, -18.3013)
+
+[node name="Grass2" parent="Herbe2" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 617.737, -2.69279, 16.6339)
+
+[node name="Herbe4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.972, 0, 0)
+
+[node name="Grass" parent="Herbe4" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 617.737, -2.69279, -18.3013)
+
+[node name="Grass2" parent="Herbe4" instance=ExtResource("1_7mtsd")]
+transform = Transform3D(-5, 0, -4.37114e-07, 0, 5, 0, 4.37114e-07, 0, -5, 617.737, -2.69279, 16.6339)
+
+[node name="EspaceDetente" parent="." instance=ExtResource("2_npk7a")]
+
+[node name="EspaceDetente2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.849, 0, 0)
+
+[node name="Fountain" parent="EspaceDetente2" instance=ExtResource("3_31xpj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 540.446, -1.14749e-05, -0.267895)
+
+[node name="Arbre2" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 524.443, -1.14749e-05, -30.5853)
+
+[node name="Arbre3" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 549.778, -1.14749e-05, -30.5853)
+
+[node name="Arbre4" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 572.386, -1.14749e-05, -30.5853)
+
+[node name="Arbre5" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 524.443, -1.14749e-05, 29.832)
+
+[node name="Arbre6" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 549.778, -1.14749e-05, 29.832)
+
+[node name="Arbre7" parent="EspaceDetente2" instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 572.386, -1.14749e-05, 29.832)
+
+[node name="StreetBench" parent="EspaceDetente2" instance=ExtResource("5_plmj0")]
+transform = Transform3D(3.68166, 0, 0, 0, 2.97625, 0, 0, 0, 2.97625, 540.838, -1.14749e-05, -19.5309)
+
+[node name="StreetBench2" parent="EspaceDetente2" instance=ExtResource("5_plmj0")]
+transform = Transform3D(-3.68166, 0, -2.60192e-07, 0, 2.97625, 0, 3.21861e-07, 0, -2.97625, 540.838, -1.14749e-05, 19.8149)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="EspaceDetente2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 13.3174, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 50.0
+shadow_enabled = true
+omni_range = 62.0
+omni_attenuation = 0.8
+
+[node name="Arbre" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 588.344, -1.14749e-05, 14.5663)
+
+[node name="Arbre2" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 601.637, -1.14749e-05, -10.0306)
+
+[node name="Arbre6" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 586.026, -1.14749e-05, -10.0306)
+
+[node name="Arbre7" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 571.643, -1.14749e-05, -1.60444)
+
+[node name="Arbre8" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 685.659, -1.14749e-05, 11.114)
+
+[node name="Arbre9" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 677.225, -1.14749e-05, -10.1513)
+
+[node name="Arbre10" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 688.151, -1.14749e-05, -4.69812)
+
+[node name="Arbre11" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 688.151, -1.14749e-05, -25.5284)
+
+[node name="Arbre12" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 688.151, -1.14749e-05, 25.3765)
+
+[node name="Arbre13" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 663.919, -1.14749e-05, 11.0984)
+
+[node name="Arbre14" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 660.512, -1.14749e-05, -11.1559)
+
+[node name="Arbre3" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 612.024, -1.14749e-05, 18.6208)
+
+[node name="Arbre4" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 612.254, -1.14749e-05, -23.5388)
+
+[node name="Arbre5" parent="." instance=ExtResource("4_ulg6g")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 620.852, -1.14749e-05, -1.41829)

@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://bielmceo56l51"]
+
+[ext_resource type="PackedScene" uid="uid://dpurvy5s66ifu" path="res://décors/natures/fontaine.tscn" id="1_vwy3g"]
+[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/natures/arbre.tscn" id="2_0rihp"]
+[ext_resource type="PackedScene" uid="uid://d3b26us1jmx6p" path="res://décors/natures/banc.tscn" id="3_xhead"]
+
+[node name="EspaceDetente" type="Node3D"]
+
+[node name="Fountain" parent="." instance=ExtResource("1_vwy3g")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 540.446, -1.14749e-05, -0.267895)
+
+[node name="Arbre2" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 524.443, -1.14749e-05, -30.5853)
+
+[node name="Arbre3" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 549.778, -1.14749e-05, -30.5853)
+
+[node name="Arbre4" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 572.386, -1.14749e-05, -30.5853)
+
+[node name="Arbre5" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 524.443, -1.14749e-05, 29.832)
+
+[node name="Arbre6" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 549.778, -1.14749e-05, 29.832)
+
+[node name="Arbre7" parent="." instance=ExtResource("2_0rihp")]
+transform = Transform3D(8.33462, 0, 0, 0, 8.33462, 0, 0, 0, 8.33462, 572.386, -1.14749e-05, 29.832)
+
+[node name="StreetBench" parent="." instance=ExtResource("3_xhead")]
+transform = Transform3D(3.68166, 0, 0, 0, 2.97625, 0, 0, 0, 2.97625, 540.838, -1.14749e-05, -19.5309)
+
+[node name="StreetBench2" parent="." instance=ExtResource("3_xhead")]
+transform = Transform3D(-3.68166, 0, -2.60192e-07, 0, 2.97625, 0, 3.21861e-07, 0, -2.97625, 540.838, -1.14749e-05, 19.8149)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 540, 13.9191, 0)
+light_color = Color(1, 0.95, 0.8, 1)
+light_energy = 50.0
+shadow_enabled = true
+omni_range = 62.0
+omni_attenuation = 0.8

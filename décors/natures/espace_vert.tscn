@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2bh6t8jrxdga"]
+[gd_scene load_steps=7 format=3 uid="uid://cdy13wbpojj33"]
 
-[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/arbre.tscn" id="1_tree"]
+[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/natures/arbre.tscn" id="1_tree"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_0iemo"]
 
