@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=3 uid="uid://dif3cnvco4yp3"]
+
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/lampadaire.tscn" id="1_lamp"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_0ykaq"]
+inner_radius = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_road"]
+albedo_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7tmld"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marks"]
+
+[node name="RoundRoad" type="Node3D"]
+transform = Transform3D(0.706899, 0, 0, 0, 0.706899, 0, 0, 0, 0.706899, 0, 0, 0)
+
+[node name="MainRoad" type="MeshInstance3D" parent="."]
+transform = Transform3D(289.43, 0, 0, 0, 0.954685, 0, 0, 0, 303.688, 0, 0, 0)
+mesh = SubResource("TorusMesh_0ykaq")
+surface_material_override/0 = SubResource("StandardMaterial3D_road")
+
+[node name="AdditionalMarkings" type="Node3D" parent="."]
+
+[node name="EntranceMarks" type="Node3D" parent="AdditionalMarkings"]
+
+[node name="Mark1" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.15, -250)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark2" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(-3.49691e-07, 0, 2, -0.0210836, 0.999997, -2.30398e-10, -7.99997, -0.00263544, -8.74225e-08, -250, 0.15, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark3" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(-3.49691e-07, 0, 2, 0, 1, 0, -8, 0, -8.74228e-08, 250, 0.15, 0)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark4" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.15, 250)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark5" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(7.59781, 0, 0.626162, 0, 1, 0, -2.50465, 0, 1.89945, -93.6038, 0.15, -233.267)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark6" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(7.89058, 0, -0.329648, 0, 1, 0, 1.31859, 0, 1.97265, 82.4093, 0.15, -243.788)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark7" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(2.3714, 0, -1.91012, 0, 1, 0, 7.64044, 0, 0.592851, 236.464, 0.15, -75.8191)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark8" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(2.98727, 0, -1.85534, 0, 1, 0, 7.42133, 0, 0.746819, 212.388, 0.15, -144.627)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark9" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(6.00495, 0, 1.32147, 0, 1, 0, -5.28588, 0, 1.50124, 136.256, 0.15, 214.367)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark10" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(-2.86525, 0, -1.86733, 0, 1, 0, 7.46929, 0, -0.716313, 240.947, 0.15, 80.306)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark11" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(7.70788, 0, 0.535521, 0, 1, 0, -2.14208, 0, 1.92697, 68.4023, 0.15, 244.002)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark12" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(-5.28158, 0, -1.50219, 0, 1, 0, 6.00873, 0, -1.3204, 198.32, 0.15, 154.711)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark13" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(6.97114, 0, -0.98117, 0, 1, 0, 3.92467, 0, 1.74279, 156.48, 0.15, -207.234)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark14" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(7.52719, 0, -0.677377, 0, 1, 0, 2.70951, 0, 1.8818, -80.002, 0.15, 240.902)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark15" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(8, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0.15, 250)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark16" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(4.79353, 0, -1.60121, 0, 1, 0, 6.40485, 0, 1.19838, -204.866, 0.15, 154.674)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark17" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(6.74803, 0, -1.07425, 0, 1, 0, 4.29698, 0, 1.68701, -146.971, 0.15, 205.363)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark18" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(1.78655, 0, -1.94949, 0, 1, 0, 7.79797, 0, 0.446636, -238.022, 0.15, 84.5116)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark19" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(2.28511, 0, 1.91668, 0, 1, 0, -7.6667, 0, 0.571276, -234.867, 0.15, -81.1759)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark20" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(6.05313, 0, 1.30766, 0, 1, 0, -5.23064, 0, 1.51328, -192.393, 0.15, -157.341)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Mark21" type="MeshInstance3D" parent="AdditionalMarkings/EntranceMarks"]
+transform = Transform3D(6.74781, 0, 1.07433, 0, 1, 0, -4.29734, 0, 1.68695, -149.507, 0.15, -197.9)
+mesh = SubResource("PlaneMesh_7tmld")
+surface_material_override/0 = SubResource("StandardMaterial3D_marks")
+
+[node name="Lighting" type="Node3D" parent="."]
+
+[node name="NorthEastLamp" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 212, 0, -212)
+
+[node name="SouthEastLamp" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 212, 0, 212)
+
+[node name="SouthWestLamp" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -212, 0, 212)
+
+[node name="NorthWestLamp" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -212, 0, -212)
+
+[node name="NorthWestLamp2" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -97.1038, 3.05176e-05, 175.274)
+
+[node name="NorthWestLamp3" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -70.3427, 3.05176e-05, -168.001)
+
+[node name="NorthWestLamp4" parent="Lighting" instance=ExtResource("1_lamp")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -293.401, 0, -52.8463)

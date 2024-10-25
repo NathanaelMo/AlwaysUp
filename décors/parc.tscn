@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://wp14m0e2hstq"]
+
+[ext_resource type="PackedScene" uid="uid://ytn3kat0s387" path="res://décors/arbre.tscn" id="1_tree"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_v8p4r"]
+subdivide_width = 32
+subdivide_depth = 32
+orientation = 1
+
+[sub_resource type="Shader" id="Shader_k2m4p"]
+code = "shader_type spatial;
+
+uniform vec3 grass_color : source_color = vec3(0.2, 0.5, 0.1);
+uniform vec3 grass_color_2 : source_color = vec3(0.1, 0.4, 0.05);
+uniform vec3 path_color : source_color = vec3(0.6, 0.5, 0.4);
+uniform float path_width : hint_range(0.0, 1.0) = 0.08;
+uniform sampler2D noise_texture;
+
+// Function to create a circular path
+float circular_path(vec2 uv, float radius, float width) {
+    float dist = abs(length(uv - vec2(0.5, 0.5)) - radius);
+    return smoothstep(width, width * 1.2, dist);
+}
+
+// Function to create a straight path segment
+float path_segment(vec2 uv, vec2 start, vec2 end) {
+    vec2 path_vector = end - start;
+    vec2 point_vector = uv - start;
+    float t = clamp(dot(point_vector, path_vector) / dot(path_vector, path_vector), 0.0, 1.0);
+    return length(point_vector - t * path_vector);
+}
+
+// Combined path function
+float path(vec2 uv) {
+    // Circular path around center
+    float circle = circular_path(uv, 0.15, path_width);
+    
+    // Four straight paths to center
+    float path1 = path_segment(uv, vec2(0.0, 0.5), vec2(0.35, 0.5));
+    float path2 = path_segment(uv, vec2(1.0, 0.5), vec2(0.65, 0.5));
+    float path3 = path_segment(uv, vec2(0.5, 0.0), vec2(0.5, 0.35));
+    float path4 = path_segment(uv, vec2(0.5, 1.0), vec2(0.5, 0.65));
+    
+    // Combine all paths
+    float straight_paths = min(min(min(path1, path2), path3), path4);
+    float path_influence = smoothstep(path_width, path_width * 1.2, straight_paths);
+    
+    // Combine straight paths with circular path
+    return min(path_influence, circle);
+}
+
+void fragment() {
+    // Add subtle grass texture variation
+    float grass_noise = texture(noise_texture, UV * 8.0).r;
+    vec3 grass_base_color = mix(grass_color, grass_color_2, grass_noise * 0.5);
+    
+    // Get path mask
+    float path_influence = path(UV);
+    
+    // Add subtle noise to path
+    float path_noise = texture(noise_texture, UV * 20.0).r * 0.1;
+    vec3 final_path_color = path_color * (0.95 + path_noise);
+    
+    // Mix path and grass colors
+    vec3 color = mix(final_path_color, grass_base_color, path_influence);
+    
+    ALBEDO = color;
+    ROUGHNESS = mix(0.7, 0.9, path_influence);
+    SPECULAR = mix(0.2, 0.1, path_influence);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ru2vx"]
+frequency = 0.05
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oq5yt"]
+seamless = true
+noise = SubResource("FastNoiseLite_ru2vx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8m3p"]
+render_priority = 0
+shader = SubResource("Shader_k2m4p")
+shader_parameter/grass_color = Color(0.2, 0.5, 0.1, 1)
+shader_parameter/grass_color_2 = Color(0.1, 0.4, 0.05, 1)
+shader_parameter/path_color = Color(0.6, 0.5, 0.4, 1)
+shader_parameter/path_width = 0.08
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_oq5yt")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_utirf"]
+
+[node name="Garden" type="Node3D"]
+transform = Transform3D(9.91375, 0, 0, 0, 9.91375, 0, 0, 0, 9.91375, 0, 0, 0)
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GrassPlane" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0.10087, 0)
+mesh = SubResource("QuadMesh_v8p4r")
+surface_material_override/0 = SubResource("ShaderMaterial_d8m3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(-3911.47, 0, 0, 0, 179.415, 0, 0, 0, -3816.21, 0, 0.0824833, 0)
+shape = SubResource("ConvexPolygonShape3D_utirf")
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="Tree1" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -6.01322, 0, -6.01322)
+
+[node name="Tree2" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 6.01322, 0, -6.01322)
+
+[node name="Tree3" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -6.01322, 0, 6.01322)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("1_tree")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 6.01322, 0, 6.01322)
