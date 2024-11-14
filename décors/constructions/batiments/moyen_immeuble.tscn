@@ -9,24 +9,24 @@ size = Vector3(12, 30, 10)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_building"]
 render_priority = 0
 shader = ExtResource("1_shader")
-shader_parameter/base_color = Color(0.85, 0.82, 0.78, 1)
-shader_parameter/dark_color = Color(0.65, 0.62, 0.58, 1)
-shader_parameter/roughness = 0.7
+shader_parameter/base_color = Color(0.9, 0.85, 0.8, 1)
+shader_parameter/dark_color = Color(0.7, 0.65, 0.6, 1)
+shader_parameter/night_darkness = 0.9
+shader_parameter/night_tint = Color(0.7, 0.85, 1, 1)
+shader_parameter/ambient_light = 5.0
+shader_parameter/window_density = 5.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_windows"]
 size = Vector3(1.5, 2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_windows"]
 albedo_color = Color(0.2, 0.4, 0.6, 1)
-metallic = 0.7
-roughness = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_roof"]
 size = Vector3(13, 1, 11)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_walls"]
 albedo_color = Color(0.8, 0.8, 0.75, 1)
-roughness = 0.7
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
 size = Vector3(12.3267, 31.0634, 10)
@@ -42,7 +42,6 @@ size = Vector3(1.8, 2.5, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_door"]
 albedo_color = Color(0.3, 0.2, 0.15, 1)
-metallic = 0.3
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_entrance"]
 size = Vector3(3, 4, 1)
@@ -68,8 +67,6 @@ height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_support"]
 albedo_color = Color(0.2, 0.2, 0.2, 1)
-metallic = 0.8
-roughness = 0.2
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_bfut7"]
 top_radius = 0.05
@@ -78,7 +75,6 @@ height = 0.3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xv13g"]
 albedo_color = Color(0.2, 0.2, 0.2, 1)
-metallic = 1.0
 roughness = 0.3
 
 [sub_resource type="BoxMesh" id="BoxMesh_p85te"]
@@ -271,7 +267,7 @@ mesh = SubResource("CylinderMesh_support")
 surface_material_override/0 = SubResource("StandardMaterial3D_support")
 
 [node name="BuildingNumber" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 6.07319)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68762, 5.8523)
 modulate = Color(0.340339, 0.340339, 0.340339, 1)
 text = "42"
 font_size = 64
@@ -280,10 +276,11 @@ font_size = 64
 transform = Transform3D(1.63659, 0, 0, 0, 1.63659, 0, 0, 0, 1.63659, 0, 3.35498, 6.37806)
 
 [node name="EntranceLight" type="SpotLight3D" parent="EntranceLampAssembly"]
+transform = Transform3D(0.15808, 0, 0, 0, 0.000237275, 0.15808, 0, -0.15808, 0.000237275, 0, 0, 0)
 light_color = Color(1, 0.95, 0.8, 1)
-light_energy = 8.026
-spot_range = 53.552
-spot_angle = 75.0
+light_energy = 8.0
+spot_range = 14.4874
+spot_angle = 38.032
 spot_angle_attenuation = 0.8
 
 [node name="LampFixture" type="MeshInstance3D" parent="EntranceLampAssembly"]

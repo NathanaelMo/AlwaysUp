@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=25 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://plateformes/plateformes_immobiles/sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://dnbcf0nmguxix" path="res://décors/constructions/batiments/grand_immeuble.tscn" id="17_plid6"]
 [ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/constructions/circulations/trottoir.tscn" id="18_7qca5"]
 [ext_resource type="Script" path="res://décors/natures/scripts/NightSky.gd" id="19_nsky"]
+[ext_resource type="PackedScene" uid="uid://wdc5kh8qdmtx" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
+[ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="21_auaw6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6s05a"]
 
@@ -27,16 +29,18 @@ albedo_color = Color(0.996078, 0.980392, 0.537255, 1)
 
 [sub_resource type="Environment" id="Environment_night"]
 background_mode = 1
-background_color = Color(0.01, 0.01, 0.02, 1)
+background_color = Color(0.02, 0.02, 0.04, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.1, 0.1, 0.2, 1)
-ambient_light_energy = 0.1
+ambient_light_color = Color(0.15, 0.15, 0.3, 1)
+ambient_light_energy = 0.5
 tonemap_mode = 3
+tonemap_exposure = 0.8
+tonemap_white = 0.8
 glow_enabled = true
-glow_intensity = 0.5
-glow_bloom = 0.2
+glow_intensity = 0.3
+glow_bloom = 0.1
 glow_blend_mode = 0
-glow_hdr_threshold = 0.7
+glow_hdr_threshold = 0.9
 
 [node name="Jeu" type="Node3D"]
 
@@ -71,12 +75,6 @@ transform = Transform3D(-2.66235e-06, 0, 7.44554, 0, 5.07203, 0, -60.9075, 0, -3
 
 [node name="Route3" parent="." instance=ExtResource("8_7ibnx")]
 transform = Transform3D(-2.66235e-06, 0, 7.44554, 0, 5.07203, 0, -60.9075, 0, -3.25455e-07, 1209.89, 0.2, 0.176691)
-
-[node name="Rue" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 503.962, -1.37161e-05, 54.9767)
-
-[node name="Rue2" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 503.962, -1.37161e-05, -56.2673)
 
 [node name="ShopBuilding" parent="." instance=ExtResource("7_wonbb")]
 transform = Transform3D(-2.01947e-07, 0, -4.62, 0, 4.62, 0, 4.62, 0, -2.01947e-07, 465.026, -1.14749e-05, 0.582085)
@@ -205,18 +203,6 @@ transform = Transform3D(3.8653, 0, 0, 0, 3.8653, 0, 0, 0, 3.8653, 943.162, -0.00
 
 [node name="MediumBuilding7" parent="." instance=ExtResource("11_jvjo1")]
 transform = Transform3D(3.8653, 0, 0, 0, 3.8653, 0, 0, 0, 3.8653, 1086.3, -0.000154912, -0.877801)
-
-[node name="Rue3" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 766.164, -0.000154912, 53.4493)
-
-[node name="Rue4" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 766.164, -0.000154912, -55.6801)
-
-[node name="Rue5" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1010.35, -0.000154912, 53.4493)
-
-[node name="Rue6" parent="." instance=ExtResource("5_34gvs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1010.35, -0.000154912, -55.6801)
 
 [node name="TallBuilding" parent="." instance=ExtResource("17_plid6")]
 transform = Transform3D(4.5, 0, 0, 0, 4.5, 0, 0, 0, 4.5, 745.873, -0.000154912, -100.308)
@@ -358,7 +344,32 @@ environment = SubResource("Environment_night")
 [node name="NightSky" type="Node3D" parent="."]
 script = ExtResource("19_nsky")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.785695, 0.618614, 0, -0.235256, 0.298796, 0.924865, 0.572135, -0.726662, 0.380296, 0, 11.1226, 0)
-light_color = Color(0.2, 0.2, 0.3, 1)
-light_energy = 0.2
+[node name="SmallBuilding9" parent="." instance=ExtResource("10_juies")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 433.968, -1.14749e-05, -83.5811)
+
+[node name="SmallBuilding10" parent="." instance=ExtResource("10_juies")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 400.76, 3.22733, -43.7616)
+
+[node name="Rue" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(-0.999819, 0, -0.0190054, 0, 1, 0, 0.0190054, 0, -0.999819, 636.287, 0, -54.2907)
+
+[node name="Rue2" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 902.46, 0, -55.2976)
+
+[node name="Rue3" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(-0.999962, 0, -0.00872664, 0, 1, 0, 0.00872664, 0, -0.999962, 1146.89, -0.000154912, -56.9566)
+
+[node name="StreetLamp" parent="." instance=ExtResource("21_auaw6")]
+transform = Transform3D(2.76069, 0, 0, 0, 2.76069, 0, 0, 0, 2.76069, 1190.33, 0.415693, -47.7456)
+
+[node name="StreetLamp2" parent="." instance=ExtResource("21_auaw6")]
+transform = Transform3D(2.76069, 0, 0, 0, 2.76069, 0, 0, 0, 2.76069, 1200.27, -0.000154912, 1.44742)
+
+[node name="Rue4" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 503.331, -0.000154912, 56.6238)
+
+[node name="Rue5" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 763.748, -0.000154912, 55.891)
+
+[node name="Rue6" parent="." instance=ExtResource("20_8rl70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1007.73, -0.000154912, 55.7479)
