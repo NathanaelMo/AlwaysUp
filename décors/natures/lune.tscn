@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8q5m2n3y4k6p"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_moon"]
+radius = 50.0
+height = 100.0
+radial_segments = 32
+rings = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moon"]
+albedo_color = Color(0.913725, 0.913725, 0.8, 1)
+metallic = 0.1
+roughness = 0.8
+emission_enabled = true
+emission = Color(0.913725, 0.913725, 0.8, 1)
+emission_energy_multiplier = 0.5
+rim_enabled = true
+rim = 0.2
+rim_tint = 0.5
+
+[node name="LuneEtLumiere" type="Node3D"]
+
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866025, -0.482963, 0.12941, 0, 0.258819, 0.965926, -0.5, -0.836516, 0.224144, 0, 0, 0)
+light_color = Color(0.709804, 0.839216, 1, 1)
+light_energy = 2.0
+light_volumetric_fog_energy = 0.4
+shadow_enabled = true
+shadow_blur = 2.0
+
+[node name="Moon" type="MeshInstance3D" parent="MoonLight"]
+transform = Transform3D(0.99953, 0.00819409, 0.0295323, -0.00767016, 0.999811, -0.0178114, -0.0296727, 0.0175765, 0.999404, 7.39847, -16.0188, -31.8873)
+mesh = SubResource("SphereMesh_moon")
+surface_material_override/0 = SubResource("StandardMaterial3D_moon")
+
+[node name="MoonGlow" type="OmniLight3D" parent="MoonLight/Moon"]
+light_color = Color(0.709804, 0.839216, 1, 1)
+light_energy = 10.0
+omni_range = 300.0
+omni_attenuation = 2.0

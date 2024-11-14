@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Shader" path="res://night_sky.gdshader" id="1_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sky"]
+shader = ExtResource("1_shader")
+shader_parameter/iterations = 20
+shader_parameter/formuparam = 1.0
+shader_parameter/volsteps = 20
+shader_parameter/stepsize = 0.1
+shader_parameter/zoom = 0.8
+shader_parameter/tile = 0.5
+shader_parameter/speed = 0.001
+shader_parameter/brightness = 0.002
+shader_parameter/darkmatter = 0.1
+shader_parameter/distfading = 0.65
+shader_parameter/saturation = 0.75
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sky"]
+blend_mode = 1
+
+[node name="SkyBackground" type="ColorRect"]
+material = SubResource("ShaderMaterial_sky")
+custom_minimum_size = Vector2(1920, 1080)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

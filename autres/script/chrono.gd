@@ -7,7 +7,7 @@ func _process(delta: float) -> void:
 	elapsed_time += delta
 	
 	# Calculer les minutes et les secondes
-	var minutes = int(elapsed_time) / 60
+	var minutes = int(elapsed_time) / 60.0
 	var seconds = int(elapsed_time) % 60
 	
 	# Afficher le chronomètre dans le label (format mm:ss)

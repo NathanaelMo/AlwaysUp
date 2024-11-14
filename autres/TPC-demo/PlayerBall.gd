@@ -2,7 +2,7 @@ extends RigidBody3D
 
 @export var speed = 10
 
-@onready var camera : ThirdPersonCamera = $ThirdPersonCamera
+@onready var camera = $ThirdPersonCamera
 
 
 func _physics_process(_delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3g6a8l7l7f2e"]
+[gd_scene load_steps=33 format=3 uid="uid://b3g6a8l7l7f2e"]
 
 [ext_resource type="Shader" path="res://décors/constructions/batiments/shaders/building_facade.gdshader" id="1_shader"]
 [ext_resource type="Script" path="res://décors/constructions/circulations/scripts/lumières.gd" id="lights_script"]
@@ -96,6 +96,27 @@ height = 0.3
 albedo_color = Color(0.2, 0.2, 0.2, 1)
 metallic = 0.8
 roughness = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row1_left"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row1_right"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row2_left"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row2_right"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row3_left"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_row3_right"]
+size = Vector3(1.2, 0.1, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_entrance_top"]
+size = Vector3(2, 0.1, 0.5)
 
 [node name="SmallBuilding" type="StaticBody3D"]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
@@ -230,3 +251,33 @@ surface_material_override/0 = SubResource("StandardMaterial3D_arhko")
 transform = Transform3D(2.92647, 0, 0, 0, 2.92647, 0, 0, 0, 2.92647, 0, -0.392639, 0)
 mesh = SubResource("CylinderMesh_87roh")
 surface_material_override/0 = SubResource("StandardMaterial3D_nkljq")
+
+[node name="WindowCollisions" type="Node3D" parent="."]
+
+[node name="Row1CollisionLeft" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 4.8, 4.1)
+shape = SubResource("BoxShape3D_window_row1_left")
+
+[node name="Row1CollisionRight" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 4.8, 4.1)
+shape = SubResource("BoxShape3D_window_row1_right")
+
+[node name="Row2CollisionLeft" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7.8, 4.1)
+shape = SubResource("BoxShape3D_window_row2_left")
+
+[node name="Row2CollisionRight" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 7.8, 4.1)
+shape = SubResource("BoxShape3D_window_row2_right")
+
+[node name="Row3CollisionLeft" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 10.8, 4.1)
+shape = SubResource("BoxShape3D_window_row3_left")
+
+[node name="Row3CollisionRight" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 10.8, 4.1)
+shape = SubResource("BoxShape3D_window_row3_right")
+
+[node name="EntranceTopCollision" type="CollisionShape3D" parent="WindowCollisions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1, 4.25)
+shape = SubResource("BoxShape3D_entrance_top")

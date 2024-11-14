@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://f2ytfci3xexd"]
+[gd_scene load_steps=15 format=3 uid="uid://f2ytfci3xexd"]
 
 [ext_resource type="Shader" path="res://décors/constructions/batiments/shaders/commercial_facade.gdshader" id="1_shader"]
 [ext_resource type="PackedScene" uid="uid://bfy2kkuxqqfyu" path="res://décors/constructions/batiments/enseigne.tscn" id="2_abi48"]
@@ -29,8 +29,17 @@ albedo_color = Color(0.2, 0.4, 0.6, 1)
 metallic = 0.7
 roughness = 0.2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_left"]
+size = Vector3(3, 1.78003, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_window_right"]
+size = Vector3(3, 2.06074, 0.3)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_collision"]
 size = Vector3(8, 4, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2eklr"]
+size = Vector3(1.46893, 1.91791, 0.989746)
 
 [sub_resource type="PrismMesh" id="PrismMesh_awning"]
 size = Vector3(4, 0.5, 1)
@@ -56,14 +65,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2, 3.1)
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("StandardMaterial3D_window")
 
+[node name="WindowLeftCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.21999, 3.1)
+shape = SubResource("BoxShape3D_window_left")
+
 [node name="WindowRight" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2, 3.1)
 mesh = SubResource("BoxMesh_window")
 surface_material_override/0 = SubResource("StandardMaterial3D_window")
 
+[node name="WindowRightCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.06963, 3.1)
+shape = SubResource("BoxShape3D_window_right")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_collision")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0317688, 0.939344, 2.84327)
+shape = SubResource("BoxShape3D_2eklr")
 
 [node name="Awning" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.89921, 0, 0, 0, 1.00052, 0, 0, 0, 2.00883, 0.132727, 4.08595, 3.575)

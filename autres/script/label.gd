@@ -4,7 +4,7 @@ extends Label
 
 var record_height = 0.0  # Stocker le record de hauteur atteint
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var player_node = get_node_or_null(player)
 	if player_node:
 		var player_height = round(player_node.global_transform.origin.y)

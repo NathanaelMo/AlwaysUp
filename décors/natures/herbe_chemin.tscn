@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://byykc3bji8ykn"]
 
-[ext_resource type="PackedScene" path="res://décors/arbre.tscn" id="1_tree"]
+[ext_resource type="PackedScene" path="res://décors/natures/arbre.tscn" id="1_tree"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_v8p4r"]
 subdivide_width = 32

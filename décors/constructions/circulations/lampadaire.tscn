@@ -74,11 +74,10 @@ mesh = SubResource("BoxMesh_glass")
 surface_material_override/0 = SubResource("StandardMaterial3D_lamp")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="LampHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 light_color = Color(1, 0.95, 0.8, 1)
-light_energy = 50.0
+light_energy = 15.0
 shadow_enabled = true
-omni_range = 62.0
+omni_range = 40.0
 omni_attenuation = 0.8
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LampHead"]
