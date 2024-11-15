@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnbcf0nmguxix"]
+[gd_scene load_steps=27 format=3 uid="uid://dnbcf0nmguxix"]
 
 [ext_resource type="Shader" path="res://décors/constructions/batiments/shaders/building_facade.gdshader" id="1_shader"]
 [ext_resource type="Script" path="res://décors/constructions/circulations/scripts/lumières.gd" id="lights_script"]
@@ -16,11 +16,14 @@ shader_parameter/night_tint = Color(0.7, 0.85, 1, 1)
 shader_parameter/ambient_light = 5.0
 shader_parameter/window_density = 5.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_windows"]
-size = Vector3(1.8, 2.2, 0.1)
+[sub_resource type="BoxMesh" id="BoxMesh_cf6fn"]
+size = Vector3(1.2, 1.5, 0.1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_windows"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ley0"]
 albedo_color = Color(0.2, 0.4, 0.6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6jfd"]
+size = Vector3(1.2, 1.5417, 0.192114)
 
 [sub_resource type="BoxMesh" id="BoxMesh_roof"]
 size = Vector3(16, 1.5, 13)
@@ -107,186 +110,410 @@ surface_material_override/0 = SubResource("ShaderMaterial_building")
 [node name="WindowRow1" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow1"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow1"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow1/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow1/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow1"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow1/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow1/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow1"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow1/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow1/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow1/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow1/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow2" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow2"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow2"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow2/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow2/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow2"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow2/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow2/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow2"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow2/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow2/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow2/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow2/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow3" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow3"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow3"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow3/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow3/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow3"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow3/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow3/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow3"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow3/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow3/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow3/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow3/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow4" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow4"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow4"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow4/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow4/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow4"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow4/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow4/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow4"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow4/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow4/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow4/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow4/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow5" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 25, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow5"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow5"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow5/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow5/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow5"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow5/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow5/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow5"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow5/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow5/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow5/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow5/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow6" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow6"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow6"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow6/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow6/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow6"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow6/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow6/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow6"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow6/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow6/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow6/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow6/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow7" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 35, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow7"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow7"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow7/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow7/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow7"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow7/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow7/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow7"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow7/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow7/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow7/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow7/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="WindowRow8" type="Node3D" parent="Windows"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
 
-[node name="Window1" type="MeshInstance3D" parent="Windows/WindowRow8"]
+[node name="Window1" type="StaticBody3D" parent="Windows/WindowRow8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window2" type="MeshInstance3D" parent="Windows/WindowRow8"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow8/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow8/Window1"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window2" type="StaticBody3D" parent="Windows/WindowRow8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window3" type="MeshInstance3D" parent="Windows/WindowRow8"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow8/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow8/Window2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window3" type="StaticBody3D" parent="Windows/WindowRow8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
 
-[node name="Window4" type="MeshInstance3D" parent="Windows/WindowRow8"]
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow8/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow8/Window3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
+
+[node name="Window4" type="StaticBody3D" parent="Windows/WindowRow8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 6.1)
-mesh = SubResource("BoxMesh_windows")
-surface_material_override/0 = SubResource("StandardMaterial3D_windows")
+
+[node name="WindowMesh" type="MeshInstance3D" parent="Windows/WindowRow8/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_cf6fn")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ley0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Windows/WindowRow8/Window4"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.0532036, 0.1)
+shape = SubResource("BoxShape3D_e6jfd")
 
 [node name="Roof" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.75, 0)
