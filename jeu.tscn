@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=30 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://plateformes/plateformes_immobiles/sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
@@ -19,8 +19,13 @@
 [ext_resource type="PackedScene" uid="uid://dnbcf0nmguxix" path="res://décors/constructions/batiments/grand_immeuble.tscn" id="17_plid6"]
 [ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/constructions/circulations/trottoir.tscn" id="18_7qca5"]
 [ext_resource type="Script" path="res://décors/natures/scripts/NightSky.gd" id="19_nsky"]
-[ext_resource type="PackedScene" uid="uid://wdc5kh8qdmtx" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
+[ext_resource type="PackedScene" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
 [ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="21_auaw6"]
+[ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateformes/plateformes_immobiles/plateforme.tscn" id="22_hcipj"]
+[ext_resource type="PackedScene" path="res://plateformes/plateformes_immobiles/plateforme_rebondissante.tscn" id="23_gjv5i"]
+[ext_resource type="PackedScene" uid="uid://6ob8q2dfy7ai" path="res://plateformes/plateformes_immobiles/plateform_cylindre.tscn" id="24_f06tp"]
+[ext_resource type="PackedScene" path="res://plateformes/plateformes_immobiles/plateforme_retrecissante.tscn" id="25_x616c"]
+[ext_resource type="PackedScene" uid="uid://bl7fu6sba4qrh" path="res://plateformes/plateformes_immobiles/plateforme_clignote.tscn" id="26_sxgcj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6s05a"]
 
@@ -50,7 +55,7 @@ player = NodePath("../Player")
 [node name="Chrono" parent="." instance=ExtResource("2_bk2hb")]
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 648.211, 2.73036, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 679.301, 30.3083, 29.639)
 
 [node name="Sol" parent="." instance=ExtResource("1_7reem")]
 transform = Transform3D(13.1229, 0, 0, 0, 6.01617, 0, 0, 0, 13.2681, 0, 0, 0)
@@ -373,3 +378,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 763.748, -0.000154912, 55.891
 
 [node name="Rue6" parent="." instance=ExtResource("20_8rl70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1007.73, -0.000154912, 55.7479)
+
+[node name="PlateformeCube" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 519.251, 5.66324, 2.02412)
+
+[node name="PlateformeCube2" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 521.305, 8.25342, -13.1293)
+
+[node name="PlateformeCube3" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.890967, -0.294834, 0, 0.454068, 0.57852, 0, 0, 0, 0.0590564, 544.577, 19.0025, -13.4814)
+
+[node name="PlateformeCube4" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 528.444, 13.4605, -13.4262)
+
+[node name="PlateformeCube5" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.0649912, 0, 0, 0, 1, 0, 0, 0, 1, 572.267, 23.8783, -16.2751)
+
+[node name="PlateformeCube6" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.0619312, 0, 0, 0, 1, 0, 0, 0, 1, 549.574, 22.275, -19.1015)
+
+[node name="PlateformeCube7" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 684.026, 23.6153, 56.5192)
+
+[node name="PlateformeRebondissante" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 706.235, 16.6141, -0.52121)
+
+[node name="PlateformCylindre" parent="." instance=ExtResource("24_f06tp")]
+transform = Transform3D(-0.0106289, 0, 0.999943, 0, 1, 0, -0.999943, 0, -0.0106289, 724.572, 27.9181, -1.07191)
+
+[node name="PlateformeCube8" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 734.286, 35.4944, 4.89828)
+
+[node name="PlateformeRetrecissante" parent="." instance=ExtResource("25_x616c")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 754.236, 37.2312, 10.4632)
+
+[node name="PlateformeCube9" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 746.501, 40.8353, -2.59089)
+
+[node name="PlateformeCube10" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 767.369, 44.0543, -3.22685)
+
+[node name="PlateformeCube11" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 786.252, 44.5556, 2.49452)
