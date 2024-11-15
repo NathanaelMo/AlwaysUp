@@ -7,12 +7,18 @@ var mouse_sensitivity = 0.20
 
 @onready var camera = $Camera3D
 @onready var animation_player = $AnimationPlayer
+@onready var light_beam = $LightBeam
 
 var is_jumping = false
 var current_platform = null
+var beam_active = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	# S'assurer que le faisceau est éteint au démarrage
+	if light_beam:
+		light_beam.visible = false
+		beam_active = false
 
 func _physics_process(delta):
 	# Appliquer la gravité
@@ -28,6 +34,10 @@ func _physics_process(delta):
 	# Vérifier si le saut est terminé
 	if is_jumping and is_on_floor():
 		is_jumping = false
+	
+	# Gérer l'interrupteur du faisceau lumineux
+	if Input.is_action_just_pressed("toggle_beam"):
+		toggle_beam()
 	
 	# Obtenir la direction d'entrée et normaliser
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
@@ -54,6 +64,24 @@ func _physics_process(delta):
 	# Mettre à jour la plateforme actuelle
 	update_current_platform()
 
+func toggle_beam():
+	if light_beam:
+		beam_active = !beam_active
+		if beam_active:
+			# Allumer avec une transition douce
+			var tween = create_tween()
+			light_beam.visible = true
+			tween.tween_property(light_beam, "light_energy", 8.0, 0.2)
+			tween.parallel().tween_property(light_beam.get_node("OmniLight3D"), "light_energy", 5.0, 0.2)
+		else:
+			# Éteindre avec une transition douce
+			var tween = create_tween()
+			tween.tween_property(light_beam, "light_energy", 0.0, 0.1)
+			tween.parallel().tween_property(light_beam.get_node("OmniLight3D"), "light_energy", 0.0, 0.1)
+			# Attendre la fin de la transition avant de cacher complètement la lumière
+			await tween.finished
+			light_beam.visible = false
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
@@ -73,4 +101,3 @@ func update_current_platform():
 			current_platform = null
 	else:
 		current_platform = null
-

@@ -298,6 +298,17 @@ transform = Transform3D(0.999655, 0, -0.0262641, 0.0096254, 0.930424, 0.366359, 
 current = true
 fov = 85.5832
 
+[node name="LightBeam" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999675, 0.0254965, 0, -0.0254965, 0.999675, 0, 0, -0.481544)
+light_color = Color(0.941176, 0.913725, 1, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 8.0
+shadow_enabled = true
+spot_range = 269.0
+spot_angle = 28.2161
+spot_angle_attenuation = 1.2
+
 [node name="BrasDroit" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.174678, -0.0280221, -0.0553128, -7.72785e-10, 0.606704, -0.0315381, 0.0518607, 0.0943843, 0.186305, 0.391707, 0.0495248, -0.148)
 mesh = SubResource("CapsuleMesh_8y4jm")
