@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxxxx"]
+
+[ext_resource type="Script" path="res://menu/pause_menu.gd" id="1_xxxxx"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxxxx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 0.784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -125.0
+offset_right = 100.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Continuer"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Options"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Recommencer"
+
+[node name="MainMenuButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Menu Principal"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Quitter"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Recommencer"
+size = Vector2i(300, 100)
+ok_button_text = "Confirmer"
+dialog_text = "Voulez-vous vraiment recommencer la partie ?"
+
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_button_pressed" binds=["Continue"]]
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_button_pressed" binds=["Restart"]]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_button_pressed" binds=["Options"]]
+[connection signal="pressed" from="VBoxContainer/MainMenuButton" to="." method="_on_button_pressed" binds=["MainMenu"]]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_button_pressed" binds=["Quit"]]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_confirmed"]

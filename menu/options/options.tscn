@@ -1,0 +1,117 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxxx"]
+
+[ext_resource type="Script" path="res://menu/options/options.gd" id="1_xxxxx"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xxxxx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -175.0
+offset_right = 150.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+
+[node name="FullscreenCheck" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "Plein écran"
+
+[node name="KeysTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Contrôles"
+horizontal_alignment = 1
+
+[node name="Keys" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="move_forward" type="Button" parent="VBoxContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "W"
+
+[node name="move_forward_label" type="Label" parent="VBoxContainer/Keys"]
+layout_mode = 2
+text = "Avancer"
+
+[node name="move_backward" type="Button" parent="VBoxContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "S"
+
+[node name="move_backward_label" type="Label" parent="VBoxContainer/Keys"]
+layout_mode = 2
+text = "Reculer"
+
+[node name="move_left" type="Button" parent="VBoxContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A"
+
+[node name="move_left_label" type="Label" parent="VBoxContainer/Keys"]
+layout_mode = 2
+text = "Gauche"
+
+[node name="move_right" type="Button" parent="VBoxContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "D"
+
+[node name="move_right_label" type="Label" parent="VBoxContainer/Keys"]
+layout_mode = 2
+text = "Droite"
+
+[node name="ui_accept" type="Button" parent="VBoxContainer/Keys"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Space"
+
+[node name="ui_accept_label" type="Label" parent="VBoxContainer/Keys"]
+layout_mode = 2
+text = "Sauter"
+
+[node name="ApplyButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Appliquer"
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Retour"
+
+[connection signal="pressed" from="VBoxContainer/Keys/move_forward" to="." method="_on_remap_key_pressed" binds= ["move_forward"]]
+[connection signal="pressed" from="VBoxContainer/Keys/move_backward" to="." method="_on_remap_key_pressed" binds= ["move_backward"]]
+[connection signal="pressed" from="VBoxContainer/Keys/move_left" to="." method="_on_remap_key_pressed" binds= ["move_left"]]
+[connection signal="pressed" from="VBoxContainer/Keys/move_right" to="." method="_on_remap_key_pressed" binds= ["move_right"]]
+[connection signal="pressed" from="VBoxContainer/Keys/ui_accept" to="." method="_on_remap_key_pressed" binds= ["ui_accept"]]
+[connection signal="pressed" from="VBoxContainer/ApplyButton" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_pressed"]

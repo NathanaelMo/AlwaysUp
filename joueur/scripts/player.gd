@@ -59,6 +59,10 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity))
 		camera.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity))
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	if event.is_action_pressed("ui_cancel"):
+		var menu = preload("res://menu/pause_menu.tscn").instantiate()
+		add_child(menu)
+		get_tree().paused = true
 
 func update_current_platform():
 	if is_on_floor():
@@ -69,3 +73,4 @@ func update_current_platform():
 			current_platform = null
 	else:
 		current_platform = null
+
