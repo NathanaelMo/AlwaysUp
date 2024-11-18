@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
 var speed = 15
+var crouch_speed = 10 # Vitesse en position accroupie
 var jump_force = 25
 var gravity = 45
 var mouse_sensitivity = 0.20
@@ -11,13 +12,16 @@ var mouse_sensitivity = 0.20
 @onready var animation_manager = $AnimationManager
 @onready var run_animation = $AnimationManager/RunAnimation if $AnimationManager else null
 @onready var jump_animation = $AnimationManager/JumpAnimation if $AnimationManager else null
+@onready var crouch_animation = $AnimationManager/CrouchAnimation if $AnimationManager else null
 
 var last_checkpoint_position: Vector3 = Vector3.ZERO
 var spawn_position: Vector3
 var has_checkpoint: bool = false
 var is_jumping = false
+var is_crouching = false # État d'accroupissement
 var current_platform = null
 var beam_active = false
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -54,9 +58,33 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
+	# Gérer l'accroupissement
+	if Input.is_action_pressed("crouch"):
+		print("CTRL pressé - tentative d'accroupissement")
+		if not is_crouching:
+			print("Transition vers accroupi")
+			is_crouching = true
+			if crouch_animation:
+				crouch_animation.toggle_crouch(true)
+	elif is_crouching: # La touche est relâchée ET on est accroupi
+		print("CTRL relâché - tentative de relèvement")
+		var ceiling = is_ceiling_above()
+		print("Obstacle au-dessus:", ceiling)
+		
+		if not ceiling: # Vérifie qu'il n'y a pas d'obstacle
+			print("Conditions de relèvement remplies")
+			is_crouching = false
+			if crouch_animation:
+				print("Animation de relèvement déclenchée")
+				crouch_animation.toggle_crouch(false)
+			else:
+				print("ERREUR: crouch_animation est null")
+		else:
+			print("Impossible de se relever - obstacle détecté")
+	
 	# Gérer le saut
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_force
+		velocity.y = jump_force * (0.7 if is_crouching else 1.0)
 		is_jumping = true
 		if jump_animation:
 			jump_animation.stop()
@@ -66,19 +94,21 @@ func _physics_process(delta):
 	
 	if is_jumping and is_on_floor():
 		is_jumping = false
-		
+	
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
-		if is_on_floor() and not is_jumping and run_animation:
+		var current_speed = crouch_speed if is_crouching else speed
+		velocity.x = direction.x * current_speed
+		velocity.z = direction.z * current_speed
+		if is_on_floor() and not is_jumping and run_animation and not is_crouching:
 			run_animation.play("run")
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
-		if is_on_floor() and not is_jumping:
+		var current_speed = crouch_speed if is_crouching else speed
+		velocity.x = move_toward(velocity.x, 0, current_speed)
+		velocity.z = move_toward(velocity.z, 0, current_speed)
+		if is_on_floor() and not is_jumping and not is_crouching:
 			if run_animation:
 				run_animation.stop()
 			if animation_manager and animation_manager.has_method("reset_model_pose"):
@@ -89,6 +119,27 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	update_current_platform()
+
+func is_ceiling_above() -> bool:
+	var space_state = get_world_3d().direct_space_state
+	var ray_origin = global_position + Vector3(0, 0.5, 0)
+	var ray_end = ray_origin + Vector3(0, 1.5, 0)
+	
+	var query = PhysicsRayQueryParameters3D.create(
+		ray_origin,
+		ray_end,
+		0xFFFFFFFF, # Masque de collision (tout)
+		[self.get_rid()] # Ignore le personnage lui-même
+	)
+	
+	var result = space_state.intersect_ray(query)
+
+	
+	# Correction ici : retourne false s'il n'y a PAS de collision
+	if result:
+		return true
+	else:
+		return false # IMPORTANT : retourne false quand il n'y a pas d'obstacle
 
 func toggle_beam():
 	if light_beam:

@@ -1,8 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://c83focuard0tc"]
+[gd_scene load_steps=28 format=3 uid="uid://c83focuard0tc"]
 
 [ext_resource type="Script" path="res://joueur/scripts/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://joueur/animations/animation_manager.gd" id="2_anim_manager"]
 [ext_resource type="Script" path="res://joueur/animations/run_animation.gd" id="3_run_anim"]
 [ext_resource type="Script" path="res://joueur/animations/jump_animation.gd" id="4_jump_anim"]
+[ext_resource type="Script" path="res://joueur/animations/crouch_animation.gd" id="5_crouch_anim"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_08hvg"]
 size = Vector3(0.888428, 2.59741, 1)
@@ -258,9 +260,13 @@ omni_range = 8.0
 omni_attenuation = 1.2
 
 [node name="AnimationManager" type="Node" parent="."]
+script = ExtResource("2_anim_manager")
 
 [node name="RunAnimation" type="AnimationPlayer" parent="AnimationManager"]
 script = ExtResource("3_run_anim")
 
 [node name="JumpAnimation" type="AnimationPlayer" parent="AnimationManager"]
 script = ExtResource("4_jump_anim")
+
+[node name="CrouchAnimation" type="AnimationPlayer" parent="AnimationManager"]
+script = ExtResource("5_crouch_anim")
