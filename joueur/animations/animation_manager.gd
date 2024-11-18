@@ -7,12 +7,14 @@ extends Node
 var was_jumping = false
 var was_running = false
 var was_crouching = false
+var was_sprinting = false
 
 enum AnimationPriority {
 	IDLE = 0,
 	CROUCH = 1,
 	RUN = 2,
-	JUMP = 3
+	SPRINT = 3,
+	JUMP = 4
 }
 
 var current_priority = AnimationPriority.IDLE
@@ -21,20 +23,42 @@ func _process(_delta):
 	var player = get_parent()
 	var is_moving = abs(player.velocity.x) > 0.1 or abs(player.velocity.z) > 0.1
 	
-	# Reset des animations quand on n'est plus accroupi
 	if not player.is_crouching and was_crouching:
 		reset_from_crouch()
 		was_crouching = false
 	
-	# Déterminer la priorité de l'animation actuelle
+	# Mise à jour de l'animation en fonction de l'état
 	if player.is_jumping:
 		handle_jump_animation()
 	elif player.is_crouching:
 		handle_crouch_animation(is_moving)
 	elif is_moving and player.is_on_floor():
-		handle_run_animation()
+		if player.is_sprinting:
+			handle_sprint_animation()
+		else:
+			handle_run_animation()
 	else:
 		handle_idle_animation()
+
+func handle_sprint_animation():
+	if current_priority != AnimationPriority.SPRINT:
+		current_priority = AnimationPriority.SPRINT
+		if run_animation and not run_animation.is_playing():
+			run_animation.play("run")
+			run_animation.speed_scale = 1.5 # Animation plus rapide pour le sprint
+		was_sprinting = true
+
+func handle_run_animation():
+	if current_priority != AnimationPriority.RUN:
+		current_priority = AnimationPriority.RUN
+		if run_animation and not run_animation.is_playing():
+			run_animation.play("run")
+			run_animation.speed_scale = 1.0 # Vitesse normale pour la course
+		was_running = true
+	
+	if was_sprinting:
+		run_animation.speed_scale = 1.0
+		was_sprinting = false
 
 func reset_from_crouch():
 	current_priority = AnimationPriority.IDLE
@@ -98,13 +122,6 @@ func handle_crouch_animation(is_moving):
 	elif not is_moving and was_running:
 		run_animation.stop()
 		was_running = false
-
-func handle_run_animation():
-	if current_priority != AnimationPriority.RUN:
-		current_priority = AnimationPriority.RUN
-		if not run_animation.is_playing():
-			run_animation.play("run")
-			was_running = true
 
 func handle_idle_animation():
 	if was_running or was_jumping:

@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 var speed = 15
 var crouch_speed = 10 # Vitesse en position accroupie
+var sprint_speed = 25 # Nouvelle variable pour la vitesse du sprint
 var jump_force = 25
 var gravity = 45
 var mouse_sensitivity = 0.20
@@ -19,6 +20,7 @@ var spawn_position: Vector3
 var has_checkpoint: bool = false
 var is_jumping = false
 var is_crouching = false # État d'accroupissement
+var is_sprinting = false # Etat pour le sprint
 var current_platform = null
 var beam_active = false
 
@@ -57,11 +59,22 @@ func _physics_process(delta):
 	# Appliquer la gravité
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+
+	# Gérer le sprint
+	if Input.is_action_pressed("sprint") and not is_crouching:
+		is_sprinting = true
+		if run_animation:
+			run_animation.speed_scale = 1.5 # Accélère l'animation
+	else:
+		is_sprinting = false
+		if run_animation:
+			run_animation.speed_scale = 1.0 # Vitesse normale
 	
 	# Gérer l'accroupissement
 	if Input.is_action_pressed("crouch"):
 		if not is_crouching:
 			is_crouching = true
+			is_sprinting = false # Désactive le sprint quand on s'accroupit
 			if crouch_animation:
 				crouch_animation.toggle_crouch(true)
 	elif is_crouching: # La touche est relâchée ET on est accroupi
@@ -93,13 +106,21 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		var current_speed = crouch_speed if is_crouching else speed
+		var current_speed = speed
+		if is_sprinting:
+			current_speed = sprint_speed
+		elif is_crouching:
+			current_speed = crouch_speed
 		velocity.x = direction.x * current_speed
 		velocity.z = direction.z * current_speed
 		if is_on_floor() and not is_jumping and run_animation and not is_crouching:
 			run_animation.play("run")
 	else:
-		var current_speed = crouch_speed if is_crouching else speed
+		var current_speed = speed
+		if is_sprinting:
+			current_speed = sprint_speed
+		elif is_crouching:
+			current_speed = crouch_speed
 		velocity.x = move_toward(velocity.x, 0, current_speed)
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 		if is_on_floor() and not is_jumping and not is_crouching:
