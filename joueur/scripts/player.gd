@@ -60,22 +60,16 @@ func _physics_process(delta):
 	
 	# Gérer l'accroupissement
 	if Input.is_action_pressed("crouch"):
-		print("CTRL pressé - tentative d'accroupissement")
 		if not is_crouching:
-			print("Transition vers accroupi")
 			is_crouching = true
 			if crouch_animation:
 				crouch_animation.toggle_crouch(true)
 	elif is_crouching: # La touche est relâchée ET on est accroupi
-		print("CTRL relâché - tentative de relèvement")
 		var ceiling = is_ceiling_above()
-		print("Obstacle au-dessus:", ceiling)
 		
 		if not ceiling: # Vérifie qu'il n'y a pas d'obstacle
-			print("Conditions de relèvement remplies")
 			is_crouching = false
 			if crouch_animation:
-				print("Animation de relèvement déclenchée")
 				crouch_animation.toggle_crouch(false)
 			else:
 				print("ERREUR: crouch_animation est null")
