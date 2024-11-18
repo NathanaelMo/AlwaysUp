@@ -6,8 +6,10 @@ var gravity = 45
 var mouse_sensitivity = 0.20
 
 @onready var camera = $Camera3D
-@onready var animation_player = $AnimationPlayer
 @onready var light_beam = $LightBeam
+@onready var animation_manager = $AnimationManager
+@onready var run_animation = $AnimationManager/RunAnimation
+@onready var jump_animation = $AnimationManager/JumpAnimation
 
 var is_jumping = false
 var current_platform = null
@@ -15,7 +17,6 @@ var beam_active = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	# S'assurer que le faisceau est éteint au démarrage
 	if light_beam:
 		light_beam.visible = false
 		beam_active = false
@@ -29,16 +30,16 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_force
 		is_jumping = true
-		animation_player.play("jump")
+		# Forcer l'animation de saut
+		if jump_animation:
+			jump_animation.stop() # Arrête toute animation de saut en cours
+			jump_animation.play("flip")
+			run_animation.stop()
 	
 	# Vérifier si le saut est terminé
 	if is_jumping and is_on_floor():
 		is_jumping = false
-	
-	# Gérer l'interrupteur du faisceau lumineux
-	if Input.is_action_just_pressed("toggle_beam"):
-		toggle_beam()
-	
+		
 	# Obtenir la direction d'entrée et normaliser
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -47,13 +48,14 @@ func _physics_process(delta):
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
-		if is_on_floor() and not is_jumping and not animation_player.is_playing():
-			animation_player.play("walk")
+		if is_on_floor() and not is_jumping:
+			run_animation.play("run")
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-		if is_on_floor() and animation_player.current_animation == "walk":
-			animation_player.stop()
+		if is_on_floor() and not is_jumping:
+			run_animation.stop()
+			animation_manager.reset_model_pose() # Reset la pose quand on arrête de bouger
 	
 	# Appliquer le mouvement de la plateforme si le joueur est dessus
 	if current_platform:
@@ -101,3 +103,12 @@ func update_current_platform():
 			current_platform = null
 	else:
 		current_platform = null
+
+func _unhandled_input(event):
+	if event.is_action_pressed("teleport_checkpoint") and has_checkpoint:
+		global_position = last_checkpoint_position + Vector3(0, 2, 0) # Légèrement au-dessus pour éviter les collisions
+
+func collect_checkpoint(pos):
+	print("Checkpoint collected at: ", pos) # Debug
+	last_checkpoint_position = pos
+	has_checkpoint = true
