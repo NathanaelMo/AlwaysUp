@@ -4,10 +4,6 @@ var speed = 15
 var jump_force = 25
 var gravity = 45
 var mouse_sensitivity = 0.20
-var last_checkpoint_position: Vector3 = Vector3.ZERO
-var spawn_position: Vector3
-var has_checkpoint: bool = false
-
 
 @onready var camera = $Camera3D
 @onready var light_beam = $LightBeam
@@ -15,21 +11,27 @@ var has_checkpoint: bool = false
 @onready var run_animation = $AnimationManager/RunAnimation
 @onready var jump_animation = $AnimationManager/JumpAnimation
 
+
+var last_checkpoint_position: Vector3 = Vector3.ZERO
+var spawn_position: Vector3
+var has_checkpoint: bool = false
 var is_jumping = false
 var current_platform = null
 var beam_active = false
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-<< << << < HEAD
-== == == =
 	add_to_group("player")
 	spawn_position = global_position
-	# S'assurer que le faisceau est éteint au démarrage
->> >> >> > 8da505cc4452692e72c5836cc6c62cd81c60a018
 	if light_beam:
 		light_beam.visible = false
 		beam_active = false
+
+	if event.is_action_pressed("teleport_checkpoint"):
+		if has_checkpoint:
+			global_position = last_checkpoint_position + Vector3(0, 2, 0)
+	else:
+		global_position = spawn_position
 
 func _physics_process(delta):
 	# Appliquer la gravité
@@ -103,11 +105,6 @@ func _input(event):
 		var menu = preload("res://menu/pause_menu.tscn").instantiate()
 		add_child(menu)
 		get_tree().paused = true
-	if event.is_action_pressed("teleport_checkpoint"):
-		if has_checkpoint:
-			global_position = last_checkpoint_position + Vector3(0, 2, 0)
-		else:
-			global_position = spawn_position
 
 func update_current_platform():
 	if is_on_floor():
