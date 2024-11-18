@@ -15,11 +15,6 @@ func _ready():
 		if light.has_node("WarningBulb"):
 			warning_bulbs.append(light.get_node("WarningBulb"))
 			
-	if warning_lights.size() > 0:
-		print("Lumières trouvées: ", warning_lights.size())
-	else:
-		print("Aucune lumière trouvée!")
-
 func _process(delta):
 	if warning_lights.size() > 0:
 		time_elapsed += delta

@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://c83focuard0tc"]
+[gd_scene load_steps=26 format=3 uid="uid://c83focuard0tc"]
 
 [ext_resource type="Script" path="res://joueur/scripts/player.gd" id="1_player"]
-[ext_resource type="Script" path="res://joueur/animations/animation_manager.gd" id="2_anim_manager"]
 [ext_resource type="Script" path="res://joueur/animations/run_animation.gd" id="3_run_anim"]
 [ext_resource type="Script" path="res://joueur/animations/jump_animation.gd" id="4_jump_anim"]
 
@@ -251,8 +250,14 @@ light_energy = 0.0
 omni_range = 3.0
 omni_attenuation = 0.5
 
+[node name="PlayerLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+light_color = Color(0.95, 0.95, 1, 1)
+light_energy = 2.0
+omni_range = 8.0
+omni_attenuation = 1.2
+
 [node name="AnimationManager" type="Node" parent="."]
-script = ExtResource("2_anim_manager")
 
 [node name="RunAnimation" type="AnimationPlayer" parent="AnimationManager"]
 script = ExtResource("3_run_anim")
