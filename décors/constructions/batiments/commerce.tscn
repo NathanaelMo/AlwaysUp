@@ -18,16 +18,16 @@ size = Vector3(1.8, 2.5, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_door"]
 albedo_color = Color(0.4, 0.3, 0.2, 1)
-metallic = 0.2
-roughness = 0.7
+metallic = 0.0
+roughness = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_window"]
 size = Vector3(3, 2, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_window"]
 albedo_color = Color(0.2, 0.4, 0.6, 1)
-metallic = 0.7
-roughness = 0.2
+metallic = 0.0
+roughness = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_window_left"]
 size = Vector3(3, 1.78003, 0.3)
