@@ -1,6 +1,6 @@
 extends Area3D
 
-const TOTAL_TROPHIES = 10
+const TOTAL_TROPHIES = 11
 static var collected_count = 0
 var collected = false
 
