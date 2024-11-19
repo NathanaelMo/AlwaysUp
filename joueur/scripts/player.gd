@@ -21,6 +21,7 @@ var has_checkpoint: bool = false
 var is_jumping = false
 var is_crouching = false # État d'accroupissement
 var is_sprinting = false # Etat pour le sprint
+var sprint_enabled = false
 var current_platform = null
 var beam_active = false
 
@@ -61,14 +62,14 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	# Gérer le sprint
-	if Input.is_action_pressed("sprint") and not is_crouching:
+	if Input.is_action_pressed("sprint") and sprint_enabled and not is_crouching:
 		is_sprinting = true
 		if run_animation:
-			run_animation.speed_scale = 1.5 # Accélère l'animation
+			run_animation.speed_scale = 1.5
 	else:
 		is_sprinting = false
 		if run_animation:
-			run_animation.speed_scale = 1.0 # Vitesse normale
+			run_animation.speed_scale = 1.0
 	
 	# Gérer l'accroupissement
 	if Input.is_action_pressed("crouch"):
@@ -209,3 +210,13 @@ func collect_checkpoint(pos):
 	has_checkpoint = true
 	# Optionnel : ajouter un effet visuel ou sonore
 	print("Checkpoint collecté à : ", pos)
+
+
+# Nouvelle méthode pour activer/désactiver la possibilité de sprinter
+func set_sprint_enabled(enabled: bool):
+	sprint_enabled = enabled
+	# Si on sort de la zone pendant un sprint, on arrête de sprinter
+	if not enabled and is_sprinting:
+		is_sprinting = false
+		if run_animation:
+			run_animation.speed_scale = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b1auymu8jeg6c"]
+[gd_scene load_steps=34 format=3 uid="uid://b1auymu8jeg6c"]
 
 [ext_resource type="PackedScene" uid="uid://42orxisspgxh" path="res://plateformes/plateformes_immobiles/sol.tscn" id="1_7reem"]
 [ext_resource type="PackedScene" uid="uid://chub61jfog3f1" path="res://autres/hauteur.tscn" id="1_f8j84"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbcf0nmguxix" path="res://décors/constructions/batiments/grand_immeuble.tscn" id="17_plid6"]
 [ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/constructions/circulations/trottoir.tscn" id="18_7qca5"]
 [ext_resource type="Script" path="res://décors/natures/scripts/NightSky.gd" id="19_nsky"]
-[ext_resource type="PackedScene" uid="uid://wdc5kh8qdmtx" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
+[ext_resource type="PackedScene" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
 [ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="21_auaw6"]
 [ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateformes/plateformes_immobiles/plateforme.tscn" id="22_hcipj"]
 [ext_resource type="PackedScene" path="res://plateformes/plateformes_immobiles/plateforme_rebondissante.tscn" id="23_gjv5i"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://bl7fu6sba4qrh" path="res://plateformes/plateformes_immobiles/plateforme_clignote.tscn" id="26_sxgcj"]
 [ext_resource type="PackedScene" uid="uid://d3b26us1jmx6p" path="res://décors/natures/banc.tscn" id="27_1bbkh"]
 [ext_resource type="PackedScene" uid="uid://ce3pfe7flsrxa" path="res://joueur/checkpoint.tscn" id="28_upt0r"]
+[ext_resource type="PackedScene" uid="uid://bhbgrnpenxnkk" path="res://joueur/sprint_zone.tscn" id="29_cgcgh"]
+[ext_resource type="PackedScene" uid="uid://dnqhdct5ia1jm" path="res://joueur/sprint_zone_invisible.tscn" id="30_m6sna"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6s05a"]
 
@@ -541,4 +543,60 @@ transform = Transform3D(-0.5, 8.74228e-08, -1.91069e-15, 0, -4.37114e-08, -0.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 805, 121, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 523.395, 0.899988, -7.67261)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 819.894, 128.418, -7.67261)
+
+[node name="PlateformeRebondissante2" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 867.84, 120.073, 0.819718)
+
+[node name="PlateformeRebondissante4" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 916.989, 107.078, 23.3151)
+
+[node name="PlateformeCube36" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 931.175, 112.437, 18.4487)
+
+[node name="PlateformeCube37" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 952.466, 111.883, 34.8912)
+
+[node name="PlateformCylindre4" parent="." instance=ExtResource("24_f06tp")]
+transform = Transform3D(-0.969016, 0, -0.246999, 0, 1, 0, 0.246999, 0, -0.969016, 965.568, 112.678, 27.6865)
+
+[node name="PlateformeCube38" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 979.746, 119.003, 1.30772)
+visible_time = 2.0
+
+[node name="PlateformeCube39" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 995.29, 119.003, 1.30772)
+
+[node name="PlateformeCube40" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1010.41, 119.003, 1.30772)
+visible_time = 5.0
+hidden_time = 2.0
+
+[node name="PlateformeCube41" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1025.95, 119.003, 1.30772)
+visible_time = 10.0
+hidden_time = 2.0
+
+[node name="PlateformeCube42" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1039.47, 119.003, 1.30772)
+hidden_time = 2.0
+
+[node name="PlateformeCube43" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1055.01, 119.003, 1.30772)
+visible_time = 2.0
+hidden_time = 2.0
+
+[node name="Checkpoint8" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 943.635, 121.781, -0.687834)
+
+[node name="Checkpoint9" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1088.99, 121.897, 0.0970305)
+
+[node name="SprintZone" parent="." instance=ExtResource("29_cgcgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 4, 827.061, 120.073, -0.851911)
+
+[node name="SprintZone3" parent="." instance=ExtResource("29_cgcgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 867.734, 120.49, 0.933702)
+
+[node name="SprintZone2" parent="." instance=ExtResource("30_m6sna")]
+transform = Transform3D(9.5, 0, 0, 0, 1, 0, 0, 0, 5, 869.843, 120.073, 0.323164)
