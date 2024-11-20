@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8j5m2n3y4k6p"]
+
+[ext_resource type="Script" path="res://joueur/scripts/finish_line.gd" id="1_script"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_finish"]
+top_radius = 0.3
+bottom_radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_finish"]
+albedo_color = Color(1, 0.8, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.8, 0, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_finish"]
+radius = 1.0
+
+[node name="FinishLine" type="Area3D"]
+script = ExtResource("1_script")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+mesh = SubResource("CylinderMesh_finish")
+surface_material_override/0 = SubResource("StandardMaterial3D_finish")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_finish")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.8, 0, 1)
+light_energy = 2.0

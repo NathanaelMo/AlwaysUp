@@ -62,7 +62,67 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Quitter"
 
+[node name="NameDialog" type="Window" parent="."]
+title = "Entrez votre pseudo"
+initial_position = 1
+size = Vector2i(300, 150)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NameDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="NameEdit" type="LineEdit" parent="NameDialog/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Entrez votre pseudo..."
+max_length = 20
+
+[node name="StartButton" type="Button" parent="NameDialog/VBoxContainer"]
+layout_mode = 2
+text = "Commencer"
+
+[node name="ScoresDialog" type="Window" parent="."]
+title = "Top Scores"
+initial_position = 1
+size = Vector2i(400, 400)
+visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoresDialog"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ScoresDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoresLabel" type="Label" parent="ScoresDialog/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+
+[node name="CloseButton" type="Button" parent="ScoresDialog/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+text = "Fermer"
+
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_button_pressed" binds= ["Jouer"]]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_button_pressed" binds= ["Options"]]
 [connection signal="pressed" from="VBoxContainer/ScoresButton" to="." method="_on_button_pressed" binds= ["Top Scores"]]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_button_pressed" binds= ["Quitter"]]
+[connection signal="pressed" from="NameDialog/VBoxContainer/StartButton" to="." method="_on_name_confirmed"]
+[connection signal="pressed" from="ScoresDialog/VBoxContainer/CloseButton" to="ScoresDialog" method="hide"]
