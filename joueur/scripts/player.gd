@@ -73,6 +73,7 @@ func _physics_process(delta):
 		can_double_jump = has_double_jump
 	
 	if Input.is_action_just_pressed("ui_accept"):
+		AudioManager.play_jump_sound()
 		if is_on_floor():
 			velocity.y = jump_force * (0.7 if is_crouching else 1.0)
 			is_jumping = true
@@ -86,6 +87,7 @@ func _physics_process(delta):
 			can_double_jump = false
 			is_jumping = true
 			if jump_animation:
+				AudioManager.play_jump_sound()
 				jump_animation.play("flip")
 	
 	if Input.is_action_pressed("sprint") and sprint_enabled and not is_crouching:
@@ -214,6 +216,7 @@ func update_current_platform():
 		current_platform = null
 
 func collect_checkpoint(pos):
+	AudioManager.play_collect_sound()
 	last_checkpoint_position = pos
 	has_checkpoint = true
 	# Optionnel : ajouter un effet visuel ou sonore

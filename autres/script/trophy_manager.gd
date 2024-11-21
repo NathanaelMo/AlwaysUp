@@ -17,6 +17,7 @@ func reset():
 	print("Trophies reset, count: ", collected_count)
 
 func collect_trophy():
+	AudioManager.play_collect_sound()
 	collected_count += 1
 	emit_signal("trophy_collected", collected_count, TOTAL_TROPHIES)
 	

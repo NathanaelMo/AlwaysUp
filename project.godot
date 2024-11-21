@@ -18,6 +18,7 @@ config/icon="res://autres/icon.svg"
 [autoload]
 
 TrophyManager="*res://autres/script/trophy_manager.gd"
+AudioManager="*res://audio/audio_manager.gd"
 
 [editor_plugins]
 

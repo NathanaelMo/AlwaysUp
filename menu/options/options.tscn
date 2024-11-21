@@ -46,6 +46,16 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Plein écran"
 
+[node name="MusicCheck" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "Musique"
+button_pressed = true
+
+[node name="SFXCheck" type="CheckBox" parent="VBoxContainer"]
+layout_mode = 2
+text = "Effets sonores"
+button_pressed = true
+
 [node name="KeysTitle" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Contrôles"
@@ -115,3 +125,5 @@ text = "Retour"
 [connection signal="pressed" from="VBoxContainer/Keys/ui_accept" to="." method="_on_remap_key_pressed" binds= ["ui_accept"]]
 [connection signal="pressed" from="VBoxContainer/ApplyButton" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="VBoxContainer/MusicCheck" to="." method="_on_music_check_toggled"]
+[connection signal="toggled" from="VBoxContainer/SFXCheck" to="." method="_on_sfx_check_toggled"]

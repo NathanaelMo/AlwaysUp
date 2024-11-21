@@ -5,7 +5,7 @@ extends Control
 var key_being_remapped = null
 var input_actions = {
     "move_forward": "Avancer",
-    "move_backward": "Reculer", 
+    "move_backward": "Reculer",
     "move_left": "Gauche",
     "move_right": "Droite",
     "ui_accept": "Sauter"
@@ -18,6 +18,8 @@ func _ready():
         
     $VBoxContainer/FullscreenCheck.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
     _update_key_labels()
+    $VBoxContainer/MusicCheck.button_pressed = AudioManager.music_enabled
+    $VBoxContainer/SFXCheck.button_pressed = AudioManager.sfx_enabled
 
 func _input(event):
     if key_being_remapped and event is InputEventKey:
@@ -50,6 +52,7 @@ func _on_apply_pressed():
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
     _return_to_previous_menu()
 
+
 func _on_back_pressed():
     _return_to_previous_menu()
 
@@ -63,3 +66,11 @@ func _return_to_previous_menu():
         queue_free()
     else:
         get_tree().change_scene_to_file("res://menu/menu.tscn")
+
+func _on_music_check_toggled(enabled: bool):
+    if AudioManager.music_enabled != enabled:
+        AudioManager.toggle_music()
+
+func _on_sfx_check_toggled(enabled: bool):
+    if AudioManager.sfx_enabled != enabled:
+        AudioManager.toggle_sfx()

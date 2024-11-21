@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	AudioManager.play_menu_music()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	setup_buttons()
 	$NameDialog.hide()
