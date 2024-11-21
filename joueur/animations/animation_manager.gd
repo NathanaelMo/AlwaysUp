@@ -99,7 +99,7 @@ func reset_from_crouch():
 		crouch_animation.queue("RESET")
 
 func handle_jump_animation():
-	if current_priority < AnimationPriority.JUMP or not jump_animation.is_playing():
+	if current_priority < AnimationPriority.JUMP and not was_jumping: # Modifié ici
 		current_priority = AnimationPriority.JUMP
 		run_animation.stop()
 		jump_animation.play("flip")
