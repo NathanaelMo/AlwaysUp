@@ -33,7 +33,7 @@ func create_stylebox(color: Color) -> StyleBoxFlat:
 func _on_button_pressed(button_name: String):
 	match button_name:
 		"Continue":
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED  # Capture la souris en retournant au jeu
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			get_tree().paused = false
 			queue_free()
 		"Restart":
@@ -51,7 +51,12 @@ func _on_button_pressed(button_name: String):
 			get_tree().quit()
 
 func _on_confirmation_confirmed():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED  # Capture la souris en redémarrant le niveau
+	# Réinitialiser le compteur de trophées avant de recharger la scène
+	var trophy_manager = get_node("/root/TrophyManager")
+	if trophy_manager:
+		trophy_manager.reset()
+	
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 

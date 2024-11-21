@@ -1,7 +1,6 @@
 extends Area3D
 
 const TOTAL_TROPHIES = 11
-static var collected_count = 0
 var collected = false
 
 func _ready():
@@ -21,26 +20,14 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and not collected:
-		print("Trophy: Valid collection by player")
 		collected = true
-		collected_count += 1
-		
-		# Préparer et afficher le message
-		var remaining = TOTAL_TROPHIES - collected_count
-		var message = "Bravo ! Vous avez ramassé un trophée (%d/%d), encore %d à trouver !" % [
-			collected_count,
-			TOTAL_TROPHIES,
-			remaining
-		]
-		
-		# Afficher le message
-		var MessageManager = load("res://autres/script/trophy_message.gd")
-		MessageManager.show_message(message)
+		var trophy_manager = get_node("/root/TrophyManager")
+		if trophy_manager:
+			trophy_manager.collect_trophy()
 		
 		# Animation de collection du trophée et suppression
 		var collection_tween = create_tween()
 		collection_tween.tween_property($Model, "scale", Vector3.ZERO, 0.3)
 		collection_tween.finished.connect(func():
-			print("Trophy: Collection animation finished, freeing trophy")
 			queue_free()
 		)

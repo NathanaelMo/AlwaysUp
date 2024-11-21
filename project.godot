@@ -15,6 +15,10 @@ run/main_scene="res://menu/menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://autres/icon.svg"
 
+[autoload]
+
+TrophyManager="*res://autres/script/trophy_manager.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray()
