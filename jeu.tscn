@@ -361,7 +361,7 @@ script = ExtResource("19_nsky")
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 433.968, -1.14749e-05, -83.5811)
 
 [node name="SmallBuilding10" parent="." instance=ExtResource("10_juies")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 400.76, 3.22733, -43.7616)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 400.76, 0.321213, -43.7616)
 
 [node name="Rue" parent="." instance=ExtResource("20_8rl70")]
 transform = Transform3D(-0.999819, 0, -0.0190054, 0, 1, 0, 0.0190054, 0, -0.999819, 636.287, 0, -54.2907)
@@ -550,7 +550,7 @@ transform = Transform3D(-0.5, 8.74228e-08, -1.91069e-15, 0, -4.37114e-08, -0.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 805, 121, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 1122.86, 298.197, -2.29822)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 394.564, 7.8858, 1.15915)
 
 [node name="PlateformeRebondissante2" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 867.84, 120.073, 0.819718)
@@ -701,7 +701,7 @@ transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 891.333, 195.397, -2.19
 transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 760.897, 300, -0.750121)
 
 [node name="FinishLine2" parent="." instance=ExtResource("34_0td2a")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1165.74, 304.1, -0.582732)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 937.562, 304.1, -0.582732)
 
 [node name="Checkpoint11" parent="." instance=ExtResource("28_upt0r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 927, 300, 1)
@@ -736,29 +736,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 948, 210, -95)
 transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 934.716, 210, -101)
 
 [node name="SprintZone5" parent="." instance=ExtResource("30_m6sna")]
-transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 938.986, 209.73, -99.5434)
+transform = Transform3D(7.6259, 0, 0, 0, 1, 0, 0, 0, 6, 922.91, 209.73, -99.5434)
 
 [node name="PlateformeRebondissante7" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 888, 210, -103)
-bounce_force = 20.0
+bounce_force = 35.0
 
 [node name="PlateformeRebondissante8" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 872.205, 210, -115.47)
-bounce_force = 20.0
+bounce_force = 35.0
 
 [node name="PlateformeRebondissante9" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 854.951, 210, -101.515)
-bounce_force = 20.0
+bounce_force = 35.0
 
 [node name="PlateformeRebondissante10" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 839.81, 210, -117.064)
-bounce_force = 20.0
+bounce_force = 35.0
 
 [node name="PlateformeCube50" parent="." instance=ExtResource("22_hcipj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.039, 215.405, -115.489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 823.331, 215.405, -99.4002)
 
 [node name="SprintZone6" parent="." instance=ExtResource("30_m6sna")]
-transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 803.994, 217.102, -117.905)
+transform = Transform3D(4.719, 0, 0, 0, 1, 0, 0, 0, 3, 803.994, 217.102, -117.905)
 
 [node name="SprintZone7" parent="." instance=ExtResource("29_cgcgh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.115, 215.843, -115.706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 823.098, 215.843, -100.313)
+
+[node name="PlateformeRebondissante11" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(7, 0, 0, 0, 1, 0, 0, 0, 7, 744, 215.828, -60.8979)
+bounce_force = 100.0
+
+[node name="Checkpoint13" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 743.066, 209.692, -96.5128)

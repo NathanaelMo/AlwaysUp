@@ -142,9 +142,10 @@ func _physics_process(delta):
 	
 	if current_platform:
 		var platform_velocity = current_platform.get_platform_velocity()
+		# On ajoute la vitesse de la plateforme à notre vitesse
 		velocity += platform_velocity
-		global_position += platform_velocity * delta
-
+		# On ne devrait PAS ajouter directement à la position globale
+		# Supprimer cette ligne : global_position += platform_velocity * delta
 	
 	move_and_slide()
 	update_current_platform()
@@ -213,14 +214,17 @@ func update_current_platform():
 		var collision = get_last_slide_collision()
 		if collision:
 			var collider = collision.get_collider()
-			if collider and collider.has_method("get_platform_velocity"):
-				current_platform = collider
+			# Vérifier si le collider est valide avant d'appeler has_method
+			if is_instance_valid(collider) and collider.has_method("get_platform_velocity"):
+				if current_platform != collider: # Ne mettre à jour que si nécessaire
+					current_platform = collider
 			else:
 				current_platform = null
 		else:
 			current_platform = null
 	else:
-		current_platform = null
+		if current_platform: # Ne réinitialiser que si nécessaire
+			current_platform = null
 
 
 func collect_checkpoint(pos):

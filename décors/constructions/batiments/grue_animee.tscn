@@ -1,29 +1,35 @@
 [gd_scene load_steps=17 format=3 uid="uid://qog2wfy3o6e7"]
 
 [sub_resource type="GDScript" id="GDScript_1"]
-script/source = "extends Node3D
+script/source = "extends StaticBody3D
 
 @export var rotation_speed = 0.1  # Rotations par seconde
-var velocity = Vector3.ZERO # Vitesse actuelle de la plateforme
-var start_position = Vector3()
-
+var velocity = Vector3.ZERO  # Vitesse actuelle de la plateforme
+var platform_radius = 0.0    # Distance du centre à laquelle se trouve le joueur
 
 func _ready():
-    start_position = global_position
+    # Calculer le rayon approximatif de la plateforme (la moitié de la taille du bras)
+    platform_radius = 10.0  # Basé sur la taille du bras de la grue
 
-
-func _process(delta):
-    var previous_position = global_position
-    var current_position = global_position
-
+func _physics_process(delta):
+    # Effectuer la rotation
     rotate_y(PI/2 * rotation_speed * delta)
-    velocity = (global_position - previous_position) / delta
+    
+    # Calculer la vitesse tangentielle
+    var angular_velocity = PI/2 * rotation_speed # en radians par seconde
+    var tangential_speed = angular_velocity * platform_radius
+    
+    # La vitesse tangentielle est perpendiculaire à la direction radiale
+    # On utilise la rotation actuelle pour déterminer la direction de la vitesse
+    var rotation_angle = global_rotation.y
+    velocity = Vector3(
+        -tangential_speed * cos(rotation_angle), # composante X
+        0,                                       # composante Y
+        -tangential_speed * sin(rotation_angle)  # composante Z
+    )
 
-    global_position = current_position
-    velocity = (global_position - previous_position) / delta
-
-func get_platform_velocity():
-    return velocity 
+func get_platform_velocity() -> Vector3:
+    return velocity
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]
