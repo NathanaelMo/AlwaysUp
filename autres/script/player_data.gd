@@ -1,6 +1,6 @@
 extends Node
 
-const SAVE_FILE = "user://highscores.dat"
+const SAVE_FILE = "res://autres/highscores.dat"
 const MAX_SCORES = 10
 
 static var player_name = ""
