@@ -7,7 +7,7 @@ const MAX_DB = 0.0
 const MENU_MUSIC = "res://audio/game.mp3"
 const GAME_MUSIC = "res://audio/game.mp3"
 const JUMP_SOUND = "res://audio/jump.mp3"
-const COLLECT_SOUND = "res://audio/jump.mp3"
+const COLLECT_SOUND = "res://audio/bravo.mp3"
 
 # Nœuds audio
 var music_player: AudioStreamPlayer
