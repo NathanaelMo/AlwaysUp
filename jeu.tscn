@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbcf0nmguxix" path="res://décors/constructions/batiments/grand_immeuble.tscn" id="17_plid6"]
 [ext_resource type="PackedScene" uid="uid://bpiov04frt2va" path="res://décors/constructions/circulations/trottoir.tscn" id="18_7qca5"]
 [ext_resource type="Script" path="res://décors/natures/scripts/NightSky.gd" id="19_nsky"]
-[ext_resource type="PackedScene" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
+[ext_resource type="PackedScene" uid="uid://wdc5kh8qdmtx" path="res://décors/constructions/circulations/rue_lumiere_un_cote.tscn" id="20_8rl70"]
 [ext_resource type="PackedScene" uid="uid://0ifwy73me7jg" path="res://décors/constructions/circulations/lampadaire.tscn" id="21_auaw6"]
 [ext_resource type="PackedScene" uid="uid://du8x310p6e3ct" path="res://plateformes/plateformes_immobiles/plateforme.tscn" id="22_hcipj"]
 [ext_resource type="PackedScene" path="res://plateformes/plateformes_immobiles/plateforme_rebondissante.tscn" id="23_gjv5i"]
@@ -31,10 +31,10 @@
 [ext_resource type="PackedScene" uid="uid://ce3pfe7flsrxa" path="res://joueur/checkpoint.tscn" id="28_upt0r"]
 [ext_resource type="PackedScene" uid="uid://bw802yt25i5m5" path="res://joueur/sprint_zone.tscn" id="29_cgcgh"]
 [ext_resource type="PackedScene" uid="uid://cioiwwd3yrjpk" path="res://autres/trophe.tscn" id="29_dd3ch"]
-[ext_resource type="PackedScene" uid="uid://dnqhdct5ia1jm" path="res://joueur/sprint_zone_invisible.tscn" id="30_m6sna"]
+[ext_resource type="PackedScene" path="res://joueur/sprint_zone_invisible.tscn" id="30_m6sna"]
 [ext_resource type="PackedScene" uid="uid://cmd6gyirlabpj" path="res://plateformes/plateformes_mobiles/plateforme_déplace.tscn" id="32_x2org"]
 [ext_resource type="PackedScene" uid="uid://b0g61dqryxfyj" path="res://plateformes/plateformes_mobiles/plateforme_monte.tscn" id="33_spp45"]
-[ext_resource type="PackedScene" uid="uid://c8j5m2n3y4k6p" path="res://joueur/finish_line.tscn" id="34_0td2a"]
+[ext_resource type="PackedScene" path="res://joueur/finish_line.tscn" id="34_0td2a"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6s05a"]
 
