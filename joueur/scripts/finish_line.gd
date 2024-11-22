@@ -13,7 +13,11 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		var chrono = get_node("/root/Jeu/Chrono")
 		var elapsed_time = chrono.elapsed_time if chrono else 0.0
-		var trophies_collected = load("res://autres/script/trophe.gd").collected_count
+		
+		# Chargez l'instance de trophée correctement
+		var trophy_manager = get_node("/root/TrophyManager") # Récupère le gestionnaire de trophées
+		var trophies_collected = trophy_manager.collected_count # Accède à la propriété via l'instance
+		
 		var player_data = load("res://autres/script/player_data.gd")
 		
 		# Sauvegarder le score
@@ -51,7 +55,7 @@ func _on_body_entered(body):
 		container.add_child(time_label)
 		
 		var trophy_label = Label.new()
-		trophy_label.text = "Trophées : %d/%d" % [trophies_collected, load("res://autres/script/trophe.gd").TOTAL_TROPHIES]
+		trophy_label.text = "Trophées : %d/%d" % [trophies_collected, TrophyManager.TOTAL_TROPHIES]
 		trophy_label.add_theme_font_size_override("font_size", 32)
 		trophy_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		container.add_child(trophy_label)
@@ -63,7 +67,7 @@ func _on_body_entered(body):
 		menu_button.pressed.connect(func():
 			end_screen.queue_free()
 			get_tree().paused = false
-			load("res://autres/script/trophe.gd").collected_count = 0
+			trophy_manager.collected_count = 0 # Réinitialiser le compteur de trophées
 			get_tree().change_scene_to_file("res://menu/menu.tscn")
 		)
 		container.add_child(menu_button)
@@ -71,6 +75,7 @@ func _on_body_entered(body):
 		end_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 		get_tree().root.add_child(end_screen)
 		get_tree().paused = true
+
 
 func _exit_tree():
 	if end_screen and is_instance_valid(end_screen):

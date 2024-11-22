@@ -4,9 +4,26 @@
 script/source = "extends Node3D
 
 @export var rotation_speed = 0.1  # Rotations par seconde
+var velocity = Vector3.ZERO # Vitesse actuelle de la plateforme
+var start_position = Vector3()
+
+
+func _ready():
+    start_position = global_position
+
 
 func _process(delta):
+    var previous_position = global_position
+    var current_position = global_position
+
     rotate_y(PI/2 * rotation_speed * delta)
+    velocity = (global_position - previous_position) / delta
+
+    global_position = current_position
+    velocity = (global_position - previous_position) / delta
+
+func get_platform_velocity():
+    return velocity 
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_base"]

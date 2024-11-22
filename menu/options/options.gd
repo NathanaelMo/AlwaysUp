@@ -21,6 +21,14 @@ func _ready():
     $VBoxContainer/MusicCheck.button_pressed = AudioManager.music_enabled
     $VBoxContainer/SFXCheck.button_pressed = AudioManager.sfx_enabled
 
+    $VBoxContainer/MusicVolumeSlider.value = AudioManager.get_music_volume()
+    $VBoxContainer/SFXVolumeSlider.value = AudioManager.get_sfx_volume()
+    
+    # Connecter les signaux des sliders
+    $VBoxContainer/MusicVolumeSlider.value_changed.connect(_on_music_volume_changed)
+    $VBoxContainer/SFXVolumeSlider.value_changed.connect(_on_sfx_volume_changed)
+
+
 func _input(event):
     if key_being_remapped and event is InputEventKey:
         if event.keycode != KEY_ESCAPE and event.keycode != KEY_ENTER:
@@ -52,6 +60,9 @@ func _on_apply_pressed():
         DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
     _return_to_previous_menu()
 
+    AudioManager.set_music_volume($VBoxContainer/MusicVolumeSlider.value)
+    AudioManager.set_sfx_volume($VBoxContainer/SFXVolumeSlider.value)
+
 
 func _on_back_pressed():
     _return_to_previous_menu()
@@ -74,3 +85,9 @@ func _on_music_check_toggled(enabled: bool):
 func _on_sfx_check_toggled(enabled: bool):
     if AudioManager.sfx_enabled != enabled:
         AudioManager.toggle_sfx()
+
+func _on_music_volume_changed(value: float):
+    AudioManager.set_music_volume(value)
+
+func _on_sfx_volume_changed(value: float):
+    AudioManager.set_sfx_volume(value)

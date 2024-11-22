@@ -4,7 +4,7 @@ signal all_trophies_collected
 signal trophy_collected(count: int, total: int)
 signal double_jump_unlocked
 
-const TOTAL_TROPHIES = 1
+const TOTAL_TROPHIES = 11
 var victory_shown = false
 var collected_count = 0
 

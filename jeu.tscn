@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://bl7fu6sba4qrh" path="res://plateformes/plateformes_immobiles/plateforme_clignote.tscn" id="26_sxgcj"]
 [ext_resource type="PackedScene" uid="uid://d3b26us1jmx6p" path="res://décors/natures/banc.tscn" id="27_1bbkh"]
 [ext_resource type="PackedScene" uid="uid://ce3pfe7flsrxa" path="res://joueur/checkpoint.tscn" id="28_upt0r"]
-[ext_resource type="PackedScene" path="res://joueur/sprint_zone.tscn" id="29_cgcgh"]
+[ext_resource type="PackedScene" uid="uid://bw802yt25i5m5" path="res://joueur/sprint_zone.tscn" id="29_cgcgh"]
 [ext_resource type="PackedScene" uid="uid://cioiwwd3yrjpk" path="res://autres/trophe.tscn" id="29_dd3ch"]
 [ext_resource type="PackedScene" path="res://joueur/sprint_zone_invisible.tscn" id="30_m6sna"]
 [ext_resource type="PackedScene" uid="uid://cmd6gyirlabpj" path="res://plateformes/plateformes_mobiles/plateforme_déplace.tscn" id="32_x2org"]
@@ -200,6 +200,7 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 740.588, -0.000154912, -1.
 
 [node name="Crane2" parent="." instance=ExtResource("12_g4sen")]
 transform = Transform3D(-10, 0, -8.74228e-07, 0, 10, 0, 8.74228e-07, 0, -10, 1148.1, -0.000154912, -1.30431)
+rotation_speed = 0.2
 
 [node name="MediumBuilding5" parent="." instance=ExtResource("11_jvjo1")]
 transform = Transform3D(3.8653, 0, 0, 0, 3.8653, 0, 0, 0, 3.8653, 807.096, -0.000154912, -0.877801)
@@ -549,7 +550,7 @@ transform = Transform3D(-0.5, 8.74228e-08, -1.91069e-15, 0, -4.37114e-08, -0.5, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 805, 121, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_8kgaq")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 532.997, 15.5955, -7.67261)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 1122.86, 298.197, -2.29822)
 
 [node name="PlateformeRebondissante2" parent="." instance=ExtResource("23_gjv5i")]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 867.84, 120.073, 0.819718)
@@ -674,3 +675,90 @@ distance = 35.0
 
 [node name="FinishLine" parent="." instance=ExtResource("34_0td2a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 558.931, 4.60666, 12.9093)
+
+[node name="PlateformeCubeQuiBouge3" parent="." instance=ExtResource("33_spp45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1117.7, 118.976, 14.7004)
+
+[node name="PlateformeCubeQuiBouge4" parent="." instance=ExtResource("33_spp45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1121.95, 135.212, 33.3513)
+delay_time = 4.0
+
+[node name="PlateformeRebondissante3" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 1183.17, 150.417, 43.6243)
+bounce_force = 120.0
+
+[node name="PlateformeRebondissante5" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 1141.88, 150.042, 41.922)
+bounce_force = 50.0
+
+[node name="Checkpoint10" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1247.14, 212.167, -4.4573)
+
+[node name="Trophe12" parent="." instance=ExtResource("29_dd3ch")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 891.333, 195.397, -2.19489)
+
+[node name="Trophe13" parent="." instance=ExtResource("29_dd3ch")]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 760.897, 300, -0.750121)
+
+[node name="FinishLine2" parent="." instance=ExtResource("34_0td2a")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1165.74, 304.1, -0.582732)
+
+[node name="Checkpoint11" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 927, 300, 1)
+
+[node name="PlateformeCube48" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1199, 210, -82)
+
+[node name="StreetBench2" parent="." instance=ExtResource("27_1bbkh")]
+transform = Transform3D(3.68166, 0, 0, 0, 2.97625, 0, 0, 0, 2.97625, 1096, 210, -119)
+
+[node name="Barriere8" parent="." instance=ExtResource("8_tygdj")]
+transform = Transform3D(10, 0, 0, 0, -5, -8.66025, 0, 8.66025, -5, 1084, 210, -113)
+
+[node name="Barriere9" parent="." instance=ExtResource("8_tygdj")]
+transform = Transform3D(10, 0, 0, 0, -5, 8.66025, 0, -8.66025, -5, 1054, 210, -113)
+
+[node name="TrashBin21" parent="." instance=ExtResource("10_ksgmk")]
+transform = Transform3D(3.96, 0, 0, 0, 3.96, 0, 0, 0, 3.96, 1049.53, 209, -93.7399)
+
+[node name="PlateformeCube49" parent="." instance=ExtResource("26_sxgcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1032, 210, -88.752)
+visible_time = 2.0
+
+[node name="PlateformeRebondissante6" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 1014.21, 210.438, -88.5469)
+bounce_force = 40.0
+
+[node name="Checkpoint12" parent="." instance=ExtResource("28_upt0r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 948, 210, -95)
+
+[node name="SprintZone4" parent="." instance=ExtResource("29_cgcgh")]
+transform = Transform3D(5, 0, 0, 0, 1, 0, 0, 0, 5, 934.716, 210, -101)
+
+[node name="SprintZone5" parent="." instance=ExtResource("30_m6sna")]
+transform = Transform3D(6, 0, 0, 0, 1, 0, 0, 0, 6, 938.986, 209.73, -99.5434)
+
+[node name="PlateformeRebondissante7" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 888, 210, -103)
+bounce_force = 20.0
+
+[node name="PlateformeRebondissante8" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 872.205, 210, -115.47)
+bounce_force = 20.0
+
+[node name="PlateformeRebondissante9" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 854.951, 210, -101.515)
+bounce_force = 20.0
+
+[node name="PlateformeRebondissante10" parent="." instance=ExtResource("23_gjv5i")]
+transform = Transform3D(4, 0, 0, 0, 1, 0, 0, 0, 4, 839.81, 210, -117.064)
+bounce_force = 20.0
+
+[node name="PlateformeCube50" parent="." instance=ExtResource("22_hcipj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.039, 215.405, -115.489)
+
+[node name="SprintZone6" parent="." instance=ExtResource("30_m6sna")]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 3, 803.994, 217.102, -117.905)
+
+[node name="SprintZone7" parent="." instance=ExtResource("29_cgcgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 815.115, 215.843, -115.706)

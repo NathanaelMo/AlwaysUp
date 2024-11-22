@@ -58,5 +58,5 @@ func _on_timer_timeout() -> void:
     is_waiting = false
 
 # Fonction pour obtenir la vélocité de la plateforme
-func get_platform_velocity() -> Vector3:
+func get_platform_velocity():
     return velocity

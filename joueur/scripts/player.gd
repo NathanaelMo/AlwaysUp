@@ -141,7 +141,10 @@ func _physics_process(delta):
 				animation_manager.reset_model_pose()
 	
 	if current_platform:
-		velocity += current_platform.get_platform_velocity()
+		var platform_velocity = current_platform.get_platform_velocity()
+		velocity += platform_velocity
+		global_position += platform_velocity * delta
+
 	
 	move_and_slide()
 	update_current_platform()
@@ -208,12 +211,17 @@ func _input(event):
 func update_current_platform():
 	if is_on_floor():
 		var collision = get_last_slide_collision()
-		if collision and collision.get_collider() is StaticBody3D and collision.get_collider().has_method("get_platform_velocity"):
-			current_platform = collision.get_collider()
+		if collision:
+			var collider = collision.get_collider()
+			if collider and collider.has_method("get_platform_velocity"):
+				current_platform = collider
+			else:
+				current_platform = null
 		else:
 			current_platform = null
 	else:
 		current_platform = null
+
 
 func collect_checkpoint(pos):
 	AudioManager.play_collect_sound()
